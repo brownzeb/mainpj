@@ -4,7 +4,7 @@ const isAdmin = async (req, res, next) => {
   try {
     const userId = req.user;
 
-    console.log(userId);
+    // console.log(userId);
 
     if (!userId) {
       return res.status(400).json({ message: "User data must be provided. " });

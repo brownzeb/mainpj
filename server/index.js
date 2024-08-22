@@ -66,7 +66,7 @@ app.all("*", (req, res) => {
   }
 });
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 mongoose.connection.on("open", () => {
   app.listen(
