@@ -8,6 +8,7 @@ const isAdmin = require("../middlewares/isAdmin.js");
 
 const router = express.Router();
 
+router.route("/").get(userController.home);
 router.route("/register").post(userController.register);
 router.route("/settings").patch(verifyJwt, userController.profileSettings);
 router.route("/allusers").get(verifyJwt, userController.getAllUsers);

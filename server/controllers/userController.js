@@ -366,6 +366,10 @@ const deposit = asyncHandler(async (req, res) => {
 
 // SEEN ALERT FOR ADMIN
 
+const home = (req, res) => {
+  return res.status(200).json({ msg: "<h1>Welcome home </h1>" });
+};
+
 // SAVE HISTORY
 
 const saveHistory = asyncHandler(async (req, res) => {
@@ -395,7 +399,7 @@ const saveHistory = asyncHandler(async (req, res) => {
 const deleteHistory = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const userId = req.user;
-  console.log(userId);
+  // console.log(userId);
   if (!id) return res.status(400).json({ message: "Credentials required." });
 
   const foundUser = await User.findById(id);
@@ -506,6 +510,7 @@ module.exports = {
   declineTxn,
   withdrawFunds,
   seenAlert,
+  home,
   editUserData,
   deposit,
   deleteUser,
