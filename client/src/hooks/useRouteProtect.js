@@ -13,6 +13,11 @@ export default function useRouteProtect(token, setState) {
       }
     };
 
+    let comp = false;
     protector();
+
+    return () => {
+      comp = true;
+    };
   }, []);
 }

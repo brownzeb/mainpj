@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const dotenv = require("dotenv");
-const { musicArtists } = require("../models/userModel");
+const { User } = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const validator = require("email-validator");
 
@@ -19,7 +19,7 @@ const login = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid email address." });
   }
 
-  const foundUser = await musicArtists.findOne({ email }).exec();
+  const foundUser = await User.findOne({ email }).exec();
   if (!foundUser) {
     return res.status(400).json({ message: "User not found." });
   }
@@ -31,7 +31,17 @@ const login = asyncHandler(async (req, res) => {
   }
 
   const accessToken = jwt.sign(
-    { id: foundUser._id, fullName: foundUser.fullName },
+    {
+      id: foundUser?._id,
+      fullName: foundUser?.fullName,
+      balance: foundUser?.balance,
+      withdrawalReq: foundUser?.withdrawalReq,
+      depositAlert: foundUser?.depositAlert,
+      profit: foundUser?.profit,
+      plan: foundUser?.plan,
+      loss: foundUser?.loss,
+      isAdmin: foundUser?.isAdmin,
+    },
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: "1d",
@@ -64,7 +74,7 @@ const refresh = asyncHandler(async (req, res) => {
 
   jwt.verify("jwt", refreshToken, async (err, decoded) => {
     if (err) return res.status(403).json({ message: "Forbidden." });
-    const foundUser = await musicArtists.findById(decoded.id);
+    const foundUser = await User.findById(decoded.id);
     if (!foundUser) return res.status(401).json({ message: "Unauthorized." });
 
     const accessToken = jwt.sign(
@@ -97,7 +107,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid email address" });
   }
 
-  const foundUser = await musicArtists.findOne({ email });
+  const foundUser = await User.findOne({ email });
   if (!foundUser) {
     return res.status(400).json({ message: "User not found." });
   }
@@ -126,14 +136,14 @@ const resetPassowrd = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid email address" });
   }
 
-  const foundUser = await musicArtists.findOne({ email });
+  const foundUser = await User.findOne({ email });
   if (!foundUser) {
     return res.status(400).json({ message: "Invalid user" });
   }
 
   foundUser.password = await bcrypt.hash(password, 10);
 
-  const savedUser = await musicArtists.findOneAndUpdate(
+  const savedUser = await User.findOneAndUpdate(
     { email: foundUser.email },
     { password: foundUser.password }
   );

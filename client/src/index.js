@@ -12,11 +12,23 @@ import DashboardPage from "./pages/Dashboard";
 import LandingPage from "./pages/LandingPage";
 import DashboardLandingUi from "./pages/fragments/ui/DashboardLandingUi";
 import { AuthProvider } from "./context/AuthProvider";
+import WithdrawUi from "./pages/fragments/ui/WithdrawUi.jsx";
 import Resetpwd from "./pages/Resetpwd";
 import Forgotpwd from "./pages/Forgotpwd";
 import ProfileUi from "./pages/fragments/ui/ProfileUi";
-import MarketUi from "./pages/fragments/ui/Market";
+import ActivitiesUi from "./pages/fragments/ui/ActivitiesUi";
 import About from "./pages/About";
+import UsersUi from "./pages/fragments/adminUi/UsersUi";
+import Contact from "./pages/Contact.jsx";
+import SingleUserUi from "./pages/fragments/adminUi/SingleUserUI";
+import Update from "./pages/Update.jsx";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboardLandingUi from "./pages/fragments/adminUi/AdminDashboardLandingUi";
+import AdminProfileUi from "./pages/fragments/adminUi/AdminProfileUi";
+import DepositUi from "./pages/fragments/ui/DepositUi";
+import Milestone from "./pages/Milestone.jsx";
+import UsersWithDepositUi from "./pages/fragments/adminUi/UsersWithDepositUi.jsx";
+import UsersWithWithdrawaltUi from "./pages/fragments/adminUi/UserWithWithdrawalReq.jsx";
 
 // const backPages = {
 //   home: "/",
@@ -36,6 +48,18 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "milestone",
+        element: <Milestone />,
+      },
+      {
+        path: "update",
+        element: <Update />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
 
       {
@@ -69,8 +93,40 @@ const router = createBrowserRouter([
         element: <DashboardLandingUi />,
       },
       { path: "profile", element: <ProfileUi /> },
+      { path: "deposit", element: <DepositUi /> },
+      { path: "withdraw", element: <WithdrawUi /> },
 
-      { path: "market", element: <MarketUi /> },
+      { path: "activity", element: <ActivitiesUi /> },
+    ],
+  },
+  {
+    path: "/admin-dashboard",
+    element: <AdminDashboard />,
+    children: [
+      {
+        path: "",
+        element: <AdminDashboardLandingUi />,
+      },
+      {
+        path: "users",
+        element: <UsersUi />,
+      },
+      {
+        path: "users/singleuser/:id",
+        element: <SingleUserUi />,
+      },
+      {
+        path: "profile",
+        element: <AdminProfileUi />,
+      },
+      {
+        path: "depositUi",
+        element: <UsersWithDepositUi />,
+      },
+      {
+        path: "withdrawalUi",
+        element: <UsersWithWithdrawaltUi />,
+      },
     ],
   },
 ]);

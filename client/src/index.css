@@ -6,8 +6,20 @@
   @apply box-border p-0 m-0;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
 body {
   @apply bg-white  text-black;
+}
+
+.line-style {
+  @apply w-1 h-5 mx-auto bg-blue-500;
+}
+
+#about-service {
+  @apply bg-green-500;
 }
 
 /* LANDING PAGE */
@@ -62,6 +74,22 @@ body {
 
 /*CUSTOM CAROUSEL DESIGN */
 
+/* DASHBOARD */
+
+/* DASHBOARDLANDING-UI: DASHBOARD CHILD VALUE CONTAINER */
+
+.child-value-container {
+  @apply flex flex-col  text-xl  min-w-max  bg-black rounded-lg shadow-md shadow-gray-400 text-white  md:flex-row justify-around  items-center  p-2;
+}
+
+.dash-data-style {
+  @apply tracking-wide font-bold;
+}
+
+.add-rem-style {
+  @apply min-w-[8rem]  h-[5rem] p-3   flex flex-col justify-center  items-center  rounded-[1.5rem]  shadow-inner  border-2  shadow-gray-200;
+}
+
 .carousel-container {
   @apply bg-green-500;
 }
@@ -69,5 +97,14 @@ body {
 /* HEADER STYLE */
 
 .header-link {
-  @apply lg:text-[1.2rem] font-bold tracking-wide  hover:underline  hover:underline;
+  @apply lg:text-[1.2rem] font-bold tracking-wider text-[1.1rem]  text-yellow-500  hover:underline;
 }
+
+.header-mobile-li-style {
+  @apply w-full  text-center;
+}
+
+.header-mobile-link-style {
+  @apply w-full text-center    block;
+}
+/* <picture><source srcset="https://d33vw3iu5hs0zi.cloudfront.net/media/sm_exness_phone_home_page_9e8292cbcc.jpg 576w,https://d33vw3iu5hs0zi.cloudfront.net/media/md_exness_phone_home_page_9e8292cbcc.jpg 768w,https://d33vw3iu5hs0zi.cloudfront.net/media/lg_exness_phone_home_page_9e8292cbcc.jpg 992w,https://d33vw3iu5hs0zi.cloudfront.net/media/xl_exness_phone_home_page_9e8292cbcc.jpg 1200w" sizes="100vw" type="image/jpeg"><img src="https://d33vw3iu5hs0zi.cloudfront.net/media/exness_phone_home_page_9e8292cbcc.jpg" srcset="" sizes="100vw" data-main-image="" class="mui-1pnaxnc e16i1q110" data-testid="image" alt="exness-phone-home-page.jpg"></picture> */

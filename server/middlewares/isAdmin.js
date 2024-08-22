@@ -1,19 +1,21 @@
 const { User } = require("../models/userModel");
 
-const isArtist = async (req, res, next) => {
+const isAdmin = async (req, res, next) => {
   try {
-    const { id } = req.body;
+    const userId = req.user;
 
-    if (!id) {
+    console.log(userId);
+
+    if (!userId) {
       return res.status(400).json({ message: "User data must be provided. " });
     }
 
-    const foundUser = await User.findById({ _id: id });
-    if (!foundUser) {
+    const foundUser = await User.findById(userId);
+    if (!foundUser || foundUser?.isAdmin === false) {
       return res.status(400).json({ message: "Invalid user." });
     }
 
-    req.userId = foundUser._id;
+    // req.userId = foundUser._id;
     next();
     // console.log(data);
     // const foundUser = await musicArtists.findOne();
@@ -22,4 +24,4 @@ const isArtist = async (req, res, next) => {
   }
 };
 
-module.exports = isArtist;
+module.exports = isAdmin;

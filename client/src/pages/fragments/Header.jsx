@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiSoundOn } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -6,6 +6,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { headerData, domain } from "../../data";
+import { FaLessThanEqual } from "react-icons/fa6";
 
 // import { domain } from "../../data";
 
@@ -20,17 +21,31 @@ import { headerData, domain } from "../../data";
 
 export default function Header() {
   const [showNav, setShowNav] = useState(false);
+  const navigate = useNavigate();
+
+  const changePage = (pg) => {
+    if (pg.length === 0) {
+      setShowNav(false);
+
+      navigate("/");
+    } else {
+      setShowNav(!showNav);
+      navigate(`/${pg}`);
+    }
+  };
 
   const content = (
     <header className=" bg-[#1c2121]  text-white  border-b-2  border-b-gray-500 z-50   abolute top-0 sticky">
       <section className="w-full  h-[4rem]  flex justify-around  items-center">
-        <Link
-          to="/"
+        <button
+          onClick={() => {
+            changePage("");
+          }}
           className="flex justify-center  items-center   border-2 rounded-[1.5rem] p-1"
         >
           <b className=" tracking-wider">{domain}</b>
           {/* <GiSoundOn className="text-[1.8rem]" /> */}
-        </Link>
+        </button>
         <Link to="/login" className="header-link">
           Sign in
         </Link>
@@ -39,13 +54,13 @@ export default function Header() {
         </Link>
 
         {headerData.map((data) => (
-          <Link
-            to={data.url}
+          <button
+            onClick={() => changePage(data.url)}
             key={data.id}
             className=" header-link   hidden md:block"
           >
             {data.name}
-          </Link>
+          </button>
         ))}
         <button onClick={() => setShowNav(!showNav)} className="md:hidden">
           {showNav ? <LiaTimesSolid /> : <RxHamburgerMenu />}
@@ -74,42 +89,60 @@ export default function Header() {
               delayChildren: 0.5,
               staggerChildren: 0.5,
             }}
-            className="text-black  text-[1.2rem] font-bold  mt-[1rem]  flex  flex-col justify-around  gap-4  items-center"
+            className=" w-full   text-black  text-[1.2rem] font-bold  mt-[1rem]  flex  flex-col justify-around  gap-4  items-center"
           >
             <motion.li
               initial={{ x: -90 }}
               whileInView={{ x: 0, y: 0 }}
-              transition={{ delay: 0, duration: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="header-mobile-li-style  "
+              onClick={() => changePage("about#about-head")}
             >
-              About Us{" "}
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}{" "}
+              About Us {/* </Link> */}
             </motion.li>
             <motion.li
               initial={{ x: -80 }}
               whileInView={{ x: 0, y: 0 }}
-              transition={{ delay: 0, duration: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="header-mobile-li-style  "
+              onClick={() => changePage("about#service")}
             >
-              Specificities{" "}
+              {/* <Link
+                to="/about#about-service"
+                className=" header-mobile-link-style "
+              > */}
+              Services {/* </Link> */}
             </motion.li>
             <motion.li
               initial={{ x: -60 }}
               whileInView={{ x: 0, y: 0 }}
-              transition={{ delay: 0, duration: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="header-mobile-li-style  "
+              onClick={() => changePage("milestone")}
             >
-              Milestone{" "}
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}
+              Milestone {/* </Link> */}
             </motion.li>
             <motion.li
               initial={{ x: -40 }}
               whileInView={{ x: 0, y: 0 }}
-              transition={{ delay: 0, duration: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="header-mobile-li-style  "
+              onClick={() => changePage("update")}
             >
-              Updates{" "}
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}
+              Updates {/* </Link> */}
             </motion.li>
             <motion.li
               initial={{ x: -20 }}
               whileInView={{ x: 0, y: 0 }}
-              transition={{ delay: 0, duration: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="header-mobile-li-style  "
+              onClick={() => changePage("contact")}
             >
-              Contact Us{" "}
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}
+              Contact Us {/* </Link> */}
             </motion.li>
           </motion.ul>
         </motion.section>

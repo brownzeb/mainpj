@@ -1,17 +1,70 @@
 import { SimpleGauge } from "react-gauges";
 // import ReactPlayer from "react-player";
 import { Chart } from "react-google-charts";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useRouteProtect from "../../../hooks/useRouteProtect";
+import { FaMinusCircle } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
+import { errorMsg } from "../../../helper/errorMsg";
+import axios from "../../../api/axios";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 export default function DashboardLandingUi() {
   const { auth, setAuth } = useOutletContext();
   const navigate = useNavigate();
   const [isAllowed, setIsAllowed] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+
+  const [errMessage, setErrMessage] = useState();
+  const [serverData, setServerData] = useState();
+  const axiosPrivate = useAxiosPrivate();
 
   console.log(auth);
 
+  useRouteProtect(auth?.accessToken, setIsAllowed);
+
+  // FETCHING USER DATA
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axiosPrivate(`/singleuser/${auth?.id}`);
+
+        console.log(response);
+
+        if (response?.status != 200) {
+          setErrMessage(response?.data?.message ?? response?.data);
+        }
+        if (!ignore) {
+          setServerData(response?.data?.foundUser);
+        }
+      } catch (error) {
+        const err = errorMsg(error);
+        setErrMessage(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    let ignore = false;
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  console.log(serverData);
+
+  let profit =
+    (Number(100) / Number(serverData?.balance)) * Number(serverData?.profit);
+
+  let loss =
+    (Number(100) / Number(serverData?.balance)) * Number(serverData?.loss);
+
+  console.log(Math.floor(profit));
   // useEffect(() => {
   //   const protector = () => {
   //     console.log(auth?.accessToken);
@@ -29,16 +82,8 @@ export default function DashboardLandingUi() {
 
   // COMBOCHART SETTING
   const comboChartData = [
-    [
-      "Month",
-      "Love in the air",
-      "tribute to poverty",
-      "Rocky love",
-      "Heart of a child",
-      "Love birds",
-      "The lifting hand",
-    ],
-    ["2024/05", 165, 938, 522, 998, 450, 614.6],
+    ["Month", "Ethereum", "Xrp", "Bitcoin", "Litecoin"],
+    ["2024/05", 165, 450, 900, 614.6],
     // ["2005/06", 135, 1120, 599, 1268, 288, 682],
     // ["2006/07", 157, 1167, 587, 807, 397, 623],
     // ["2007/08", 139, 1110, 615, 968, 215, 609.4],
@@ -46,9 +91,9 @@ export default function DashboardLandingUi() {
   ];
 
   const comboChartOptions = {
-    title: "Most streamed songs for the month.",
+    title: "Market recent trade performance.",
     vAxis: {
-      title: "Song stream",
+      title: "Trade Performance",
       textStyle: { color: "white" },
       titleTextStyle: { color: "white" },
     },
@@ -68,16 +113,16 @@ export default function DashboardLandingUi() {
 
   // PIE CHART SETTING
   const pieChartData = [
-    ["Artists", "Rate"],
-    ["showdy", 11],
-    ["Tees", 2],
-    ["Roote", 2],
-    ["Carter", 2],
-    ["Smill", 7],
+    ["Crypto", "Rate"],
+    ["Bitcoin", 11],
+    ["Ethereum", 2],
+    ["Solana", 2],
+    ["Xrp", 2],
+    ["Litecoin", 7],
   ];
 
   const pieChartOptions = {
-    title: "Artist recorgnition chart",
+    title: "Most traded digital assets",
     is3D: true,
     titleTextStyle: { color: "white", fontSize: 12 },
     backgroundColor: "black",
@@ -85,18 +130,67 @@ export default function DashboardLandingUi() {
   };
 
   const content = (
-    <main className="w-full  min-h-screen bg-black  text-white  grid  sm:grid-cols-2   place-content-center  ">
-      <section className="w-full  h-[5rem]  flex justify-center  items-center  ">
-        <ul>
-          <li>
-            Uploaded Songs: <b>50</b>
-          </li>
-        </ul>
+    <main className="w-full  min-h-screen bg-black text-white flex flex-col justify-center  items-center ">
+      <section className="min-w-full   rounded-b-lg     flex  gap-4 flex-col justify-around items-center ">
+        <div className=" w-full    mx-auto grid grid-cols-2  gap-4   rounded-lg  md:grid-cols-4  p-2 ">
+          <div className="child-value-container">
+            <span className="dash-data-style">Balance</span>
+            <span>
+              {" "}
+              &#36;{Number(serverData?.balance) - Number(serverData?.profit)}
+            </span>
+          </div>
+          <div className="child-value-container">
+            <span className="dash-data-style">Invested</span>
+            <span>&#36;{serverData?.balance}</span>
+          </div>
+          <div className="child-value-container">
+            <span className="dash-data-style">
+              Profit
+              <sup className="text-green-500 underline underline-offset-1 ml-2">
+                &#37;{Math.floor(profit)}
+              </sup>
+            </span>
+            <span>
+              &#36;{serverData?.profit}{" "}
+              <sub className="text-green-500 ml-1 ">&#10138;</sub>
+            </span>
+          </div>
+          <div className="child-value-container">
+            <span className="dash-data-style">
+              Loss
+              <sup className="text-red-500   underline underline-offset-1  ml-2">
+                &#37;{Math.floor(loss)}
+              </sup>
+            </span>
+            <span>
+              &#36;{serverData?.loss}
+              <sub className="text-red-500  ml-1">&#10136;</sub>
+            </span>
+          </div>
+        </div>
+        <div className="w-[90%]  mx-auto flex justify-around items-center p-2   ">
+          <Link
+            to="/dashboard/withdraw"
+            className="add-rem-style  border-blue-500"
+          >
+            <FaMinusCircle className="text-[2rem]" />
+            <p>Withdraw</p>
+          </Link>
+          <Link
+            to="/dashboard/deposit"
+            className="add-rem-style  border-green-500"
+          >
+            <FaPlusCircle className="text-[2rem]" />
+            <p>Deposit</p>
+          </Link>
+        </div>
       </section>
       {/* <section className="w-[80%]  mx-auto  p-3     flex justify-center  items-center">
         <SimpleGauge value={50} maxLimit={1000} style={{ color: "white" }} />
       </section> */}
       <section className="text-white">
+        <h1>Trade Performance Overview</h1>
         <Chart
           chartType="ComboChart"
           width="100%"
@@ -106,6 +200,8 @@ export default function DashboardLandingUi() {
         />
       </section>
       <section className="w-full ">
+        <h1>General Performance Overview</h1>
+
         <Chart
           chartType="PieChart"
           data={pieChartData}
@@ -124,8 +220,8 @@ export default function DashboardLandingUi() {
     </main>
   );
 
-  // return isAllowed === true && content;
-  return content;
+  return isAllowed === true && content;
+  // return content;
 }
 
 // LINKS TO CHART TEMPLATE SETUP

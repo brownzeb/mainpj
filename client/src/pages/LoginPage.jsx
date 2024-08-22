@@ -71,9 +71,35 @@ export default function LoginPage() {
           navigate("/login");
         }
         const userData = jwtDecode(accessToken);
-        const { id, fullName } = userData;
-        setAuth((prev) => ({ ...prev, id, fullName, accessToken }));
-        navigate("/dashboard/", { state: { fullName } });
+        const {
+          id,
+          fullName,
+          plan,
+          balance,
+          profit,
+          loss,
+          withdrawalReq,
+          depositAlert,
+          isAdmin,
+        } = userData;
+        setAuth((prev) => ({
+          ...prev,
+          id,
+          fullName,
+          accessToken,
+          plan,
+          balance,
+          profit,
+          loss,
+          withdrawalReq,
+          depositAlert,
+        }));
+        console.log(isAdmin);
+        if (isAdmin === true) {
+          navigate("/admin-dashboard");
+        } else {
+          navigate("/dashboard/", { state: { fullName } });
+        }
 
         console.log(userData);
       }
@@ -193,6 +219,15 @@ export default function LoginPage() {
           className="bg-[#0a572a]  text-xl tracking-wide rounded-lg  mx-auto block  p-2"
         />
       </form>
+      <p>
+        Don't have an account{" "}
+        <Link
+          to="/register"
+          className=" text-blue-600  text-bold tracking-wide "
+        >
+          register
+        </Link>
+      </p>
       <p>
         Forgot password click{" "}
         <Link
