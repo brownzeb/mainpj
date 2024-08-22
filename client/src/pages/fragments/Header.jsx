@@ -41,9 +41,15 @@ export default function Header() {
           onClick={() => {
             changePage("");
           }}
-          className="flex justify-center  items-center   border-2 rounded-[1.5rem] p-1"
+          className="flex justify-center  items-center   border-y-2 rounded-md  shadow-inside shadow-gray-500  p-1"
         >
-          <b className=" tracking-wider">{domain}</b>
+          <span className="text-green-500">
+            Bull <sup>&#10138;</sup>
+          </span>
+          <span className="text-red-500">
+            Bear <sup>&#10136;</sup>
+          </span>
+          <span className="text-blue-500">Experts</span>
           {/* <GiSoundOn className="text-[1.8rem]" /> */}
         </button>
         <Link to="/login" className="header-link">
@@ -54,13 +60,13 @@ export default function Header() {
         </Link>
 
         {headerData.map((data) => (
-          <button
-            onClick={() => changePage(data.url)}
+          <Link
+            to={data.url}
             key={data.id}
             className=" header-link   hidden md:block"
           >
             {data.name}
-          </button>
+          </Link>
         ))}
         <button onClick={() => setShowNav(!showNav)} className="md:hidden">
           {showNav ? <LiaTimesSolid /> : <RxHamburgerMenu />}

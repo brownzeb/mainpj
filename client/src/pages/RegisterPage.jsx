@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from "../api/axios";
 import * as EmailValidator from "email-validator";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { errorMsg } from "../helper/errorMsg";
 import { secretQuestions } from "../data";
 
@@ -51,7 +51,7 @@ export default function RegisterPage() {
         },
       };
       setIsloading(true);
-      const response = await axios.post("/register", credentials, apiHeader);
+      const response = await axios.post("/register", credentials);
 
       console.log(response);
       if (response.status === 201 || response?.data?.message === "Success") {
@@ -329,9 +329,15 @@ export default function RegisterPage() {
         {/* END OF SECRET ANSWER */}
         <input
           type="submit"
-          className="bg-[#0a572a]  text-xl tracking-wide rounded-lg  mx-auto block  p-2  lg:col-span-2"
+          className="bg-[#0a572a]  text-white  text-xl tracking-wide rounded-lg  mx-auto block  p-2  lg:col-span-2"
         />
       </form>
+      <p>
+        Already have an account?{" "}
+        <Link to="/login" className=" text-blue-600  text-bold tracking-wide ">
+          Sign in
+        </Link>
+      </p>
     </main>
   );
 

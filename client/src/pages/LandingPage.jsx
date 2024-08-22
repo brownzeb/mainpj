@@ -282,7 +282,7 @@ export default function LandingPage() {
 
             <Link
               className="bg-[#99c2e9] p-3 text-center text-[1.1rem] tracking-wide  my-2  rounded-md text-black shadow-xl shadow-gray-600"
-              to="#"
+              to="/register"
             >
               Choose Plan &#10138;
             </Link>

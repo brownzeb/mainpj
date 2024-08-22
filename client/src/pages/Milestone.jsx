@@ -1,5 +1,4 @@
 import { domain, milestone } from "../data";
-import "../milestonestyle.css";
 import mstone from "../assets/mstone.jpg";
 
 export default function Milestone() {
@@ -8,10 +7,10 @@ export default function Milestone() {
       {/* MILESTONE IMG */}
       <section
         id="about-head"
-        className="w-full h-[20rem] pl-4  bg-gray-300   relative pt-2"
+        className="w-full  md:h-[30rem] h-[20rem] pl-4  bg-gray-300   relative pt-2"
       >
         <h2 className=" font-bold text-[1.3rem]  text-black  tracking-wide   capitalize  ">
-          Our Milestone
+          Milestone
         </h2>
         <div className=" h-1 w-[12rem] right-7 bg-blue-500  "></div>
 

@@ -20,7 +20,7 @@ import user4 from "./assets/user4.jpeg";
 import user5 from "./assets/user5.jpeg";
 
 // SITE NAME
-export const domain = "cryptowall";
+export const domain = "BullbearExperts";
 
 // CONTACT US
 
@@ -103,22 +103,22 @@ export const updateData = [
 export const milestone = [
   {
     head: "Aug 15th 2016",
-    msg: "service name description and many more",
+    msg: `We proudly achieved the esteemed recognition of being one of the  best trading platform on August 15th, 2016. This accomplishment is a testament to the dedication and expertise of our team in creating a cutting-edge platform that meets the needs of our users. We are committed to providing a top-notch trading experience, and this prestigious award serves as a validation of our continuous efforts to excel in the financial industry.`,
     id: 1,
   },
   {
     head: "Feb 5th 2017",
-    msg: "service name description and many more",
+    msg: `On February 5th, 2017, a security breach was successfully prevented, thanks to the prompt and vigilant actions of the cybersecurity team at ${domain}. Their expertise and dedication were crucial in identifying and neutralizing the threat before any sensitive data was compromised. This incident highlights the importance of having a skilled and proactive security team in place to safeguard against potential breaches and protect the integrity of sensitive information. Working with professionals like ${domain} can be a key component in maintaining a secure and resilient cybersecurity infrastructure.`,
     id: 2,
   },
   {
     head: "June 12th 2019",
-    msg: "service name description and many more",
+    msg: `On June 12th, 2019, ${domain} stood out as one of the companies that traded the most digital assets in the market. With their strategic approach and expertise in the digital asset trading realm, ${domain} displayed a noteworthy commitment to navigating the complexities of the market. Their proficient trading activities on that day undoubtedly showcased their dedication to maximizing opportunities in the digital asset landscape with prominent professionalism.`,
     id: 3,
   },
   {
     head: "Oct 7th 2023 ",
-    msg: "service name description and many more",
+    msg: `On October 7th, 2023, ${domain} was honored to be acknowledged as a company renowned for its exceptional accuracy in trade prediction. This recognition reaffirms our commitment to excellence and expertise in the financial market. We take immense pride in our dedication to providing reliable and precise trade predictions to our clients, and this recognition further motivates us to continue delivering high-quality services. We are grateful for this acknowledgment and look forward to further solidifying our reputation as a leading authority in trade prediction.`,
     id: 4,
   },
 ];

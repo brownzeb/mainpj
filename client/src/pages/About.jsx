@@ -9,7 +9,7 @@ export default function About() {
       {/* image styling section */}
       <section
         id="about-head"
-        className="w-full h-[20rem] pl-4  bg-gray-200 relative pt-2"
+        className="w-full md:h-[30rem] h-[20rem] pl-4  bg-gray-200 relative pt-2"
       >
         <h2 className=" font-bold text-[1.3rem]  tracking-wide   capitalize  ">
           About {domain}
