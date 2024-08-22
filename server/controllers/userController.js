@@ -367,7 +367,7 @@ const deposit = asyncHandler(async (req, res) => {
 // SEEN ALERT FOR ADMIN
 
 const home = (req, res) => {
-  return res.status(200).json({ msg: "<h1>Welcome home </h1>" });
+  return res.status(200).send("<h1>Welcome home </h1>");
 };
 
 // SAVE HISTORY
