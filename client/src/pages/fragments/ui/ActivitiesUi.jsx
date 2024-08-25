@@ -27,7 +27,7 @@ export default function ActivitiesUi() {
 
   const { auth } = useOutletContext();
 
-  console.log(auth?.id);
+  // console.log(auth);
 
   useRouteProtect(auth?.accessToken, setIsAllowed);
 
@@ -38,7 +38,7 @@ export default function ActivitiesUi() {
       try {
         const response = await axiosPrivate(`/singleuser/${auth?.id}`);
 
-        console.log(response);
+        // console.log(response);
 
         if (response?.status != 200) {
           setUiData((p) => ({
@@ -70,7 +70,7 @@ export default function ActivitiesUi() {
   // [uiData?.updateUi];
 
   const { data: foundUser } = uiData;
-  console.log(uiData);
+  // console.log(uiData);
 
   const historyData =
     uiData?.data?.foundUser?.txnHistory &&
@@ -78,13 +78,13 @@ export default function ActivitiesUi() {
       ? uiData?.data?.foundUser?.txnHistory
       : 0;
 
-  console.log(historyData);
+  // console.log(historyData);
 
   const clearHistory = async () => {
     setIsLoading(true);
     try {
       const res = await axiosPrivate.patch(`/deletehistory/${auth?.id}`);
-      console.log(res);
+      // console.log(res);
       if (res?.status === 200) {
         setUiData((p) => ({ ...p, isError: false, updateUi: true }));
       }
