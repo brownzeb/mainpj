@@ -7,6 +7,8 @@ import { useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { headerData, domain } from "../../data";
 import { FaLessThanEqual } from "react-icons/fa6";
+import bullbear from "../../assets/bullbear.jpg";
+
 
 // import { domain } from "../../data";
 
@@ -43,14 +45,16 @@ export default function Header() {
           }}
           className="flex justify-center  items-center   border-y-2 rounded-md  shadow-inside shadow-gray-500  p-1"
         >
-          <span className="text-green-500">
+          {/* <span className="text-green-500">
             Bull <sup>&#10138;</sup>
           </span>
           <span className="text-red-500">
             Bear <sup>&#10136;</sup>
           </span>
-          <span className="text-blue-500">Experts</span>
+          <span className="text-blue-500">Experts</span> */}
+          <img src={bullbear} alt="bullbearLogo" style={{ width: '50px', height: '50px' }} />
           {/* <GiSoundOn className="text-[1.8rem]" /> */}
+          <img src="" alt="" />
         </button>
         <Link to="/login" className="header-link">
           Sign in
