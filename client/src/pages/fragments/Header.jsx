@@ -52,7 +52,7 @@ export default function Header() {
             Bear <sup>&#10136;</sup>
           </span>
           <span className="text-blue-500">Experts</span> */}
-          <img src={bullbear} alt="bullbearLogo" style={{ width: '50px', height: '50px' }} />
+          <img src={bullbear} alt="bullbearLogo" style={{ width: '30px', height: '30px' }} />
           {/* <GiSoundOn className="text-[1.8rem]" /> */}
           <img src="" alt="" />
         </button>
