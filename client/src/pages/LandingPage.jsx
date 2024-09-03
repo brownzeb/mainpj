@@ -37,6 +37,20 @@ export default function LandingPage() {
   const [width, setWidth] = useState(window.innerWidth);
   const [searchData, setSearchData] = useState("");
 
+
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "//code.tidio.co/tsxe0jxicyh6jqofkheftwzluxeyiloo.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   // FOR CAROUSEL config
 
   const settings = {
