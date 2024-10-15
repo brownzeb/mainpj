@@ -37,6 +37,7 @@ export default function ProfileUi() {
         const response = await axiosPrivate(`/singleuser/${auth?.id}`);
 
         console.log(response);
+        // console.log(response);
 
         if (response?.status != 200) {
           setErrMessage(response?.data?.message ?? response?.data);
