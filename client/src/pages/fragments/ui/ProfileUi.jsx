@@ -69,6 +69,7 @@ export default function ProfileUi() {
   // DESTRUCTURED USEFORM DATA
 
   // SETTING-UI CONTENT
+  //changed 
 
   const logout = async () => {
     try {
