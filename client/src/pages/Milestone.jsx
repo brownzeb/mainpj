@@ -24,6 +24,8 @@ export default function Milestone() {
         {/* <img src={mstone} alt="milestone" className="w-[90%] mx-auto h-[50%]" /> */}
         <h2 className="w-[98%] underline underline-offset-4  capitalize  mx-auto font-black text-gray-700">
           milestone from 2016 - 2024
+
+          {/* this is a test */}
         </h2>
         {milestone.map((data) => (
           <div
