@@ -12,6 +12,7 @@ import useAuth from "../../../hooks/useAuth";
 import { walletTypes } from "../../../data";
 import useRouteProtect from "../../../hooks/useRouteProtect";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+// import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 export default function WithdrawUi() {
   // DESTRUCTURED USEFORM DATA
