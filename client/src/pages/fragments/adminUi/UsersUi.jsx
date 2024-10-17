@@ -119,7 +119,7 @@ export default function UsersUi() {
                 className="w-full h-[2.5rem] border-b-2 border-b-gray-400  "
               >
                 <Link
-                  to={`singleuser/${data?._id}`}  
+                  to={`singleuser/${data?._id}`}
                   className="w-full  block  min-h-full my-auto  font-mono  tracking-wide "
                 >
                   {data?.email}
@@ -130,9 +130,10 @@ export default function UsersUi() {
             <div className=" w-[90%]  mx-auto  flex flex-col justify-center  items-center">
               <h4>No Users to show</h4>
               <button
-              onClick={()=>setReload(!reload)}
-              className="text-white rounded-md bg-[gree] font-bold flex flex-col justify-around items-center"
+                onClick={() => setReload(!reload)}
+                className="text-white rounded-md bg-[gree] font-bold flex flex-col justify-around items-center"
               >
+                Reload
                 <MdReplayCircleFilled className="text-[2rem]  text-white " />
               </button>
             </div>
