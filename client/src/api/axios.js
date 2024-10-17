@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "https://getup-one.vercel.app";
+// const BASE_URL = "https://getup-one.vercel.app";
+
+const BASE_URL = "http://127.0.0.1:5000";
 
 const apiHeader = {
   headers: {

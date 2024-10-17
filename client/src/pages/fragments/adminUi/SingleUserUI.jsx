@@ -158,7 +158,7 @@ export default function SingleUserUi() {
   console.log(serverData);
 
   const content = (
-    <main className=" w-full  min-h-screen  flex  flex-col  gap-3   justify-center  items-center">
+    <main className=" w-full  min-h-screen  flex  flex-col  gap-3  my-[4rem] justify-center  items-center">
       <section className=" w-[98%] mx-auto   rounded-t-xl  bg-black text-white p-3  flex  flex-col  gap-3 justify-center  items-center ">
         <h3 className="w-[80%] lg:w-[40%] h-[7rem]   shadow-md shadow-gray-500  rounded-full border-4  border-white  text-[6rem] mx-auto uppercase text-center   flex justify-center  items-center">
           {serverData?.fullName.charAt()}
