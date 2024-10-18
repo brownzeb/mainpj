@@ -10,8 +10,11 @@ const artistSchema = new mongoose.Schema(
     },
     password: { type: String, required: ["Password must be provided"] },
     balance: { type: String, default: "00.00" },
+    invested: { type: String, default: "00.00" },
+
     plan: { type: String, default: "None" },
     profit: { type: String, default: "00.00" },
+
     loss: { type: String, default: "00.00" },
     approveWithdrawal: { type: Boolean, default: false },
     declineWithdrawal: { type: Boolean, default: false },

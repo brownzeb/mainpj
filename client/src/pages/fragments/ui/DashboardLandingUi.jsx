@@ -135,14 +135,11 @@ export default function DashboardLandingUi() {
         <div className=" w-full    mx-auto grid grid-cols-2  gap-4   rounded-lg  md:grid-cols-4  p-2 ">
           <div className="child-value-container">
             <span className="dash-data-style">Balance</span>
-            <span>
-              {" "}
-              &#36;{Number(serverData?.balance) - Number(serverData?.profit)}
-            </span>
+            <span> &#36;{serverData?.balance}</span>
           </div>
           <div className="child-value-container">
             <span className="dash-data-style">Invested</span>
-            <span>&#36;{serverData?.balance}</span>
+            <span>&#36;{serverData?.invested}</span>
           </div>
           <div className="child-value-container">
             <span className="dash-data-style">

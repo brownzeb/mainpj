@@ -74,6 +74,8 @@ export default function SingleUserUi() {
       loss: serverData?.loss,
       profit: serverData?.profit,
       balance: serverData?.balance,
+      invested: serverData?.invested,
+
       plan: serverData?.plan,
     },
   });
@@ -88,6 +90,10 @@ export default function SingleUserUi() {
     shouldDirty: true,
     shouldTouch: true,
   });
+  setValue("invested", serverData?.invested, {
+    shouldDirty: true,
+    shouldTouch: true,
+  });
   setValue("loss", serverData?.loss, { shouldDirty: true, shouldTouch: true });
   setValue("profit", serverData?.profit, {
     shouldDirty: true,
@@ -98,7 +104,7 @@ export default function SingleUserUi() {
   const onSubmit = async (data) => {
     console.log(data);
     // alert(data);
-    const { plan, balance, loss, profit } = data;
+    const { plan, balance, loss, profit, invested } = data;
     // if (!plan && !balance && !loss && !secretQuestion && !secretAnswer) {
     //   return setErrMessage("All fields are required");
     // }
@@ -110,6 +116,7 @@ export default function SingleUserUi() {
         id,
         plan: plan && plan != "" ? plan : "None",
         balance: balance && balance != "" ? balance : "00.00",
+        invested: invested && invested != "" ? invested : "00.00",
         loss: loss && loss != "" ? loss : "00.00",
         profit: profit && profit != "" ? profit : "00.00",
       };
@@ -168,6 +175,8 @@ export default function SingleUserUi() {
           <li>Fullname: {serverData?.fullName}</li>
           <li>Email: {serverData?.email}</li>
           <li>Plan: {serverData?.plan}</li>
+          <li>Invested: {serverData?.invested}</li>
+
           <li>Profit: {serverData?.profit}</li>
           <li>Balance: {serverData?.balance}</li>
           <li>Loss: {serverData?.loss}</li>
@@ -264,6 +273,35 @@ export default function SingleUserUi() {
             )} */}
           </div>
           {/* END OF BALANCE */}
+
+          {/* INVESTED */}
+          <div className="form-div-style">
+            <label htmlFor="invested" className="form-label-style ">
+              Invested:{" "}
+            </label>
+            <input
+              type="text"
+              // placeholder={serverData?.balance}
+              // defaultValue={serverData?.balance}
+              id="invested"
+              {...register("invested", {
+                // required: { value: true, message: "Please fill this field" },
+                // maxLength: { value: 50, message: "Length exceeded." },
+              })}
+              name="invested"
+              className={`form-input-style  ${
+                errors?.invested ? "border-red-400" : "border-green-500"
+              } `}
+            />
+            {/* {errors?.balance && errors?.balance?.type == "required" && (
+              <p className="error-msg-style">{errors?.balance?.message}</p>
+            )} */}
+
+            {/* {errors?.balance && errors?.balance?.type == "maxLength" && (
+              <p className="error-msg-style"> {errors?.balance?.message}</p>
+            )} */}
+          </div>
+          {/* END OF invested */}
 
           {/* PROFIT  */}
           <div className="form-div-style">

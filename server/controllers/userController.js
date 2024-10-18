@@ -236,9 +236,14 @@ const declineTxn = asyncHandler(async (req, res) => {
 
 // MODIFY SINGLEUSERS DATA
 const editUserData = asyncHandler(async (req, res) => {
-  const { balance, profit, plan, loss, id } = req.body;
+  const { balance, profit, plan, loss, invested, id } = req.body;
 
-  if (isNaN(balance) === true || isNaN(profit) || isNaN(loss)) {
+  if (
+    isNaN(balance) === true ||
+    isNaN(invested) === true ||
+    isNaN(profit) ||
+    isNaN(loss)
+  ) {
     return res.status(400).json({ message: "Please enter a digit." });
   }
 
@@ -250,6 +255,8 @@ const editUserData = asyncHandler(async (req, res) => {
     { _id: foundUser?._id },
     {
       balance: balance ?? "00.00",
+      invested: invested ?? "00.00",
+
       profit: profit ?? "00.00",
       loss: loss ?? "00.00",
       plan: plan ?? "None",
@@ -259,6 +266,8 @@ const editUserData = asyncHandler(async (req, res) => {
   if (!updatedUser) {
     return res.status(400).json({ message: "Invalid user data recieved." });
   }
+
+  // console.log(foundUser);
 
   return res.status(200).json({ message: "success" });
 });
