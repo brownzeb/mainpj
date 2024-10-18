@@ -329,6 +329,7 @@ export default function RegisterPage() {
         {/* END OF SECRET ANSWER */}
         <input
           type="submit"
+          value="Let's Go"
           className="bg-[#0a572a]  text-white  text-xl tracking-wide rounded-lg  mx-auto block  p-2  lg:col-span-2"
         />
       </form>
