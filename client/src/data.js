@@ -309,19 +309,19 @@ export const adminWalletData = [
   {
     walletType: "btc",
     network: "btc",
-    walletAddr: "bc1qq7yqtvthqf0eca2jtc0r5ayjpr8gflv6tqt8nr",
+    walletAddr: "bc1ql3f66cf5hmq0k5zgsdag7qs4s2ugrgpc5q0ue3",
     id: 1,
   },
   {
     walletType: "eth",
     network: "erc20",
-    walletAddr: "0x71cC0764f038b7d6420099F3B74DA2340a4E7f66",
+    walletAddr: "0x7e0081731C50cC89E980136302614B9e99eE0dE1",
     id: 2,
   },
   {
     walletType: "usdt",
     network: "usdt",
-    walletAddr: "TX6QFCiQAnfD1iWPLbmWjvDQVUeiVapRW2",
+    walletAddr: "TUn2xEfTZhsp8of9JwkGipnb9eFnEWNegG",
     id: 3,
   },
 ];
