@@ -305,6 +305,8 @@ export const walletTypes = [
   { name: "usdt", id: 3 },
 ];
 
+// szkvflsai rvj
+
 export const adminWalletData = [
   {
     walletType: "btc",
