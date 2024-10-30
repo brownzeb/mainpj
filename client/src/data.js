@@ -305,7 +305,8 @@ export const walletTypes = [
   { name: "usdt", id: 3 },
 ];
 
-// szkvflsai rvj
+// szkvflsai rvjsjhdvisd
+// onsbopvnsd
 
 export const adminWalletData = [
   {
