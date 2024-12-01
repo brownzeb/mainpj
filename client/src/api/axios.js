@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const BASE_URL = "https://getup-server.vercel.app";
+const BASE_URL = "https://somtooinvestment.vercel.app/";
 
-const BASE_URL = "http://127.0.0.1:6500";
+// const BASE_URL = "http://127.0.0.1:6700";
 
 // man is a rational being
 
