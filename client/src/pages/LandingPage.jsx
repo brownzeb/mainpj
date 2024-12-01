@@ -581,11 +581,6 @@ export default function LandingPage() {
           </div>
         </article>
       </section>
-      {/* NUMBERS THAT MADE US */}
-      {/* chat  */}
-      {/* <section className="w-[80%]    h-[10rem]  mx-auto  bg-red-500   fixed  bottom-0 right-0 ">
-        <button>message us</button>
-      </section> */}
     </main>
   );
 
