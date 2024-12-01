@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 // import axios from "axios";
 import * as EmailValidator from "email-validator";
 import { useNavigate, Link } from "react-router-dom";
@@ -128,8 +128,8 @@ export default function Resetpwd() {
       )}
 
       {loading && (
-        <ScaleLoader
-          color="white"
+        <PropagateLoader
+          color="red"
           cssOverride={{ height: "500", width: "500" }}
         />
       )}

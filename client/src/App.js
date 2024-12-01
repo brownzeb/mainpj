@@ -3,11 +3,12 @@ import Footer from "./pages/fragments/Footer";
 import Header from "./pages/fragments/Header";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import { domain } from "./data";
 
 export default function App({ children }) {
   useEffect(() => {
     const changeLogo = () => {
-      document.title = "Bullbearexperts";
+      document.title = domain;
     };
 
     changeLogo();

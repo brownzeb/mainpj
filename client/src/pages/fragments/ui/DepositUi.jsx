@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
+
 // import axios from "axios";
 import * as EmailValidator from "email-validator";
 import { useNavigate, Link, useOutletContext } from "react-router-dom";
@@ -145,14 +146,19 @@ export default function DepositUi() {
     <main className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-around  items-center  ">
       <div className="flex justify-center  items-center">
         {" "}
-        <span className="text-xl font-bold mr-1">Deposit Funds</span>{" "}
-        <FaPlusCircle className="inline  my-2 text-[2rem] " />{" "}
+        <span
+          className="text-[1.5rem]  text-red-500 font-serif"
+          style={{ textShadow: "2px 2px darkgray" }}
+        >
+          Deposit Funds
+        </span>{" "}
+        {/* <FaPlusCircle className="inline  my-2 text-[2rem] " />{" "} */}
       </div>
       <hr className="w-[50%] bg-black" />
 
-      <ol className="w-[85%] lg:w-[60%] mx-auto  list-decimal list-inside  bg-yellow-600    text-[1.2rem]  font-md  tracking-wide  text-white   p-3 ">
-        <li>Input amount</li>
-        <li>Copy your prefered crypto wallet and make deposit in it.</li>
+      <ol className="w-[85%] lg:w-[60%] mx-auto  list-decimal list-inside  bg-gray-300    text-[1.2rem]  font-md  tracking-wide  text-gray-500   p-3 ">
+        <li>Input amount you wish to deposit</li>
+        <li>Copy any of the crypto wallet below and make deposit to it.</li>
         <li>Click on the "I have deposited this crypto" button</li>
       </ol>
 
@@ -167,8 +173,8 @@ export default function DepositUi() {
         </p>
       ) : (
         loading && (
-          <ScaleLoader
-            color="white"
+          <PropagateLoader
+            color="red"
             cssOverride={{ height: "500", width: "500" }}
           />
         )
@@ -194,7 +200,7 @@ export default function DepositUi() {
             })}
             name="depositedAmount"
             className={`form-input-style  ${
-              errors?.depositedAmount ? "border-red-400" : "border-green-500"
+              errors?.depositedAmount ? "border-red-400" : "border-gray-500"
             } `}
           />
           {errors?.depositedAmount &&
@@ -312,7 +318,7 @@ export default function DepositUi() {
               </h5>
               <p className=" w-[70%]  overflow-x-scroll">{data?.walletAddr}</p>
               <p
-                className="text-[1.2rem] p-2  mb-2 bg-green-500 shadow-lg shadow-gray-600  font-md tracking-wide "
+                className="text-[1.2rem] p-2  mb-2 bg-[#03045e] text-white  hover:cursor-pointer shadow-lg shadow-gray-600  font-md tracking-wide "
                 onClick={() =>
                   setWalletData(data?.walletType, data?.walletAddr)
                 }
@@ -327,7 +333,7 @@ export default function DepositUi() {
 
         <button
           type="submit"
-          className="bg-[#0a572a] text-white  text-xl tracking-wide rounded-lg  mx-auto block  p-2"
+          className="bg-red-500 text-white  mt-[0.8rem]  text-[0.9rem] tracking-wide rounded-lg  mx-auto block  py-2   px-[2rem]"
         >
           I have deposited this crypto
         </button>

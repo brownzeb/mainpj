@@ -69,7 +69,7 @@ export default function ProfileUi() {
   // DESTRUCTURED USEFORM DATA
 
   // SETTING-UI CONTENT
-  //changed 
+  //changed
 
   const logout = async () => {
     try {
@@ -89,7 +89,7 @@ export default function ProfileUi() {
   };
   const content = (
     <main
-      className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-around  items-center
+      className="w-full min-h-screen     text-black  flex  flex-col   justify-start  items-center  gap-4
       "
     >
       {errMessage && <p className="text-red-500 mx-auto ">{errMessage}</p>}
@@ -125,6 +125,21 @@ export default function ProfileUi() {
         >
           Logout
         </button>
+      </section>
+
+      <hr className={`sm:hidden  w-[30%]  mx-auto bg-gray-500  my-[1rem]`} />
+
+      <section className="w-[80%]  text-center  mx-auto ">
+        <article className="bg-gray-500 text-white  text-center  flex flex-col justify-center p-[1rem]  items-center  gap-3  ">
+          <h2 className="font-bold tracking-wide">Account Security</h2>
+          <p className=" w-full  font-thin text-gray-200   p-[1rem]">
+            We employ state-of-the-art security measures to safeguard our
+            clients' accounts and personal information from any unauthorized
+            access or potential security threats. Our team continuously monitors
+            and updates our security protocols to ensure the highest level of
+            protection for your assets and data.
+          </p>
+        </article>
       </section>
     </main>
   );

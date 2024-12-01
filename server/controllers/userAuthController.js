@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const { User } = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const validator = require("email-validator");
+const bcrypt = require("bcrypt");
 
 dotenv.config();
 

@@ -35,11 +35,14 @@ export default function AdminProfileUi() {
     navigate("/");
   };
   const content = (
-    <main className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-around  items-center  ">
+    <main className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-start  items-center  ">
       <section>
-        <h2>Email: mike@gmail.com</h2>
-        <h2>Full Name: Mike Moore</h2>
-        <h2>Investment plan: Mega</h2>
+        <h2
+          className="text-center text-red-500  tracking-wide font-serif"
+          style={{ textShadow: "2px 2px gray" }}
+        >
+          WELCOME TO THE ADMIN PROFILE{" "}
+        </h2>
 
         <button
           onClick={() => logout()}

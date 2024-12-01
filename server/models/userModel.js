@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const artistSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     fullName: { type: String, required: ["Fullname must be provided"] },
     email: {
@@ -41,6 +41,6 @@ const artistSchema = new mongoose.Schema(
 );
 
 const User =
-  mongoose.models.getupusers || mongoose.model("getupusers", artistSchema);
+  mongoose.models.harvestusers || mongoose.model("harvestusers", userSchema);
 
 module.exports = { User };

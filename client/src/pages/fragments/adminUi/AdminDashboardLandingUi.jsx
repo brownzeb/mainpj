@@ -178,7 +178,7 @@ export default function AdminDashboardLandingUi() {
   const content = (
     <main className="w-full  min-h-screen bg-black text-white flex flex-col justify-center  items-center ">
       <section className="min-w-full   rounded-b-lg     flex  gap-4 flex-col justify-around items-center ">
-        <div className=" w-full    mx-auto grid grid-cols-2  gap-4   rounded-lg  md:grid-cols-4  p-2 ">
+        <div className=" w-full    mx-auto grid grid-cols-1  gap-4   rounded-lg  md:grid-cols-4  p-2 ">
           <div className="child-value-container">
             <span className="dash-data-style">Investors</span>
             <span>{totalInvstors}</span>

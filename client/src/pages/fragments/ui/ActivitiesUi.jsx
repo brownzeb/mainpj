@@ -12,6 +12,7 @@ import { MdReplayCircleFilled } from "react-icons/md";
 import { FaPlusCircle } from "react-icons/fa";
 import { MdOutlineAutoDelete } from "react-icons/md";
 import { FaMinusCircle } from "react-icons/fa";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 export default function ActivitiesUi() {
   const [file, setFile] = useState();
@@ -99,11 +100,11 @@ export default function ActivitiesUi() {
 
   const content = (
     <main
-      className="w-full min-h-screen   bg-black flex  flex-col justify-start  items-center pt-3
+      className="w-full min-h-screen   bg-white text-black  flex  flex-col justify-start  items-center pt-3
     "
     >
       <section className="w-[99%]  mx-auto    flex flex-col justify-start  gap-3  items-center ">
-        <h2 className="mx-auto  font-black  text-yellow-500  tracking-wider text-[1.2rem] ">
+        <h2 className="mx-auto  font-black  text-red-500  font-serif tracking-wider text-[1.2rem] ">
           {" "}
           Transaction History
         </h2>
@@ -111,11 +112,12 @@ export default function ActivitiesUi() {
           onClick={() => {
             clearHistory();
           }}
-          className="bg-red-500  mx-auto p-2 rounded-md text-center gap-2  tracking-wide text-white text-[0.8rem] font-serif  flex justify-around  items-center"
+          className="bg-black  mx-auto px-[2rem] py-2 shadow-inner shadow-gray-200  text-center gap-2  tracking-wide text-white text-[0.8rem] font-serif  flex justify-around  items-center"
         >
-          <MdOutlineAutoDelete className="text-[1.6rem] " /> Clear History
+          <MdOutlineAutoDelete className="text-[1.8rem]  text-red-500 font-thin " />{" "}
+          Wipe History
         </button>
-        <div className="  w-full  text-white  flex flex-col justify-center items-center">
+        <div className="  w-full  text-black  flex flex-col justify-center items-center">
           <ul className="w-full    flex flex-col justify-center gap-3 items-center">
             {historyData && historyData != 0 ? (
               historyData.map((data, i) => (
@@ -123,12 +125,12 @@ export default function ActivitiesUi() {
                   key={i}
                   className="w-[98%] h-[3rem]   border-b-2 border-b-gray-300 m-auto  text-[1.2rem] tracking-wide font-serif   flex justify-center   items-center"
                 >
-                  <div className="w-[99%]   flex justify-around  items-center  mx-auto">
+                  <div className="w-[99%]  text-[0.9rem]  text-gray-500 flex justify-around  items-center  mx-auto">
                     {" "}
                     {data?.txnType === "deposit" ? (
                       <FaPlusCircle className="text-[1.8rem] text-green-500" />
                     ) : (
-                      <FaMinusCircle className="text-[1.8rem] text-red-500" />
+                      <FaMinusCircle className="text-[o.9rem] text-red-500" />
                     )}
                     <span className="capitalize">{data?.txnType}</span>
                     <span>${data?.amount}</span>
@@ -137,11 +139,11 @@ export default function ActivitiesUi() {
                 </li>
               ))
             ) : isLoading ? (
-              <ScaleLoader className="text-white  mx-auto text-[1.4rem]" />
+              <PropagateLoader className="text-white  mx-auto text-[1.4rem]" />
             ) : (
               <li className="w-[90%]  mx-auto  flex flex-col justify-center items-center gap-3  text-center">
                 <h4>No Activities to show</h4>
-                <MdReplayCircleFilled className="text-[2rem]  text-white " />
+                <MdReplayCircleFilled className="text-[2rem]  text-gray-400 " />
               </li>
             )}
           </ul>

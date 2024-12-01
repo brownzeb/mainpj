@@ -106,10 +106,13 @@ export default function UsersUi() {
 
   // console.log(usersList);
   const content = (
-    <main className="w-full min-h-screen   bg-black flex  flex-col justify-start items-center">
-      <section className="w-[90%]  mx-auto  text-white  flex  flex-col   justify-center items-center ">
-        <h2 className="font-black my-4 text-[1.3rem] text-yellow-500  mx-auto ">
-          All Users
+    <main className="w-full h-full min-h-screen   bg-white  text-black flex  flex-col justify-start items-center">
+      <section className="w-[90%]  mx-auto    flex  flex-col   justify-center items-center ">
+        <h2
+          className="font-black my-4 text-[1.4rem] text-red-500  mx-auto "
+          style={{ textShadow: "2px 2px gray" }}
+        >
+          Users
         </h2>
         <ol className="w-[98%]  mx-auto  list-decimal   flex  gap-3 flex-col justify-around  items-center">
           {usersList && usersList != 0 ? (

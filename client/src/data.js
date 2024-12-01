@@ -5,22 +5,35 @@ import { LuCandlestickChart } from "react-icons/lu";
 import { FaWallet } from "react-icons/fa6";
 import { GiWallet } from "react-icons/gi";
 import { FaUpload } from "react-icons/fa";
+// import { IoHomeSharp } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa6";
+
+import { LuActivity } from "react-icons/lu";
 import aibot from "./assets/aibot.jpg";
 import increase from "./assets/increase.jpg";
 import { FaLocationDot } from "react-icons/fa6";
 import expert from "./assets/expert.jpg";
 import preventhacker from "./assets/preventhacker.jpg";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { MdManageAccounts } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import user1 from "./assets/user1.jpeg";
 import user2 from "./assets/user2.jpeg";
 import user3 from "./assets/user3.jpeg";
 import user4 from "./assets/user4.jpeg";
 import user5 from "./assets/user5.jpeg";
+import { SiLetsencrypt } from "react-icons/si";
+import { FaBuildingShield } from "react-icons/fa6";
+import { GrSecure } from "react-icons/gr";
+import { IoPricetag } from "react-icons/io5";
+
+import { RiSettingsFill } from "react-icons/ri";
+import { FaDatabase } from "react-icons/fa";
+import { BsFillWalletFill } from "react-icons/bs";
+import { FaBtc } from "react-icons/fa";
 
 // SITE NAME
-export const domain = "BullbearExperts";
+export const domain = "bullcloud";
 
 // CONTACT US
 
@@ -83,7 +96,7 @@ export const updateData = [
     id: 2,
   },
   {
-    msg: "Boost your profit margin by 25%",
+    head: "Boost your profit margin by 25%",
     msg: `To boost profit margin by 25% within the cryptobull market, strategic planning and keen financial acumen are essential. By analyzing market trends, diversifying investment portfolios, and leveraging innovative technologies, companies can capitalize on the dynamic nature of the cryptobull landscape to maximize returns efficiently. Embracing a proactive approach to risk management and fostering strong partnerships within the industry will further solidify a competitive edge, driving sustained growth and profitability in the ever-evolving ${domain} sector.`,
     imgUrl: increase,
 
@@ -149,39 +162,39 @@ export const services = [
 
 export const investmentPlans = [
   {
-    name: "Plan 1",
+    name: "Standard Plan",
     CB: "Yes",
-    minAmount: "$2000",
-    maxAmount: "$15,000",
+    minAmount: "$1000",
+    maxAmount: "$5,000",
     ROI: "6% daily",
     RC: "2%",
     id: 1,
   },
   {
-    name: "Plan 2",
+    name: "Mega Plan",
     CB: "Yes",
-    minAmount: "$15,000",
-    maxAmount: "$30,000",
+    minAmount: "$5,100",
+    maxAmount: "$10,000",
     ROI: "8% daily",
     RC: "4%",
     id: 2,
   },
   {
-    name: "Plan 3",
+    name: "Deluxe Plan",
     CB: "Yes",
-    minAmount: "$60,000",
-    maxAmount: "$100,000",
-    ROI: "7.2% daily",
-    RC: "5%",
+    minAmount: "$10,000",
+    maxAmount: "$20,000",
+    ROI: "10% daily",
+    RC: "6%",
     id: 3,
   },
   {
-    name: "Plan 4",
+    name: "VIP Plan",
     CB: "Yes",
-    minAmount: "$100,000",
+    minAmount: "$21,000",
     maxAmount: "Unlimited",
-    ROI: "8% daily",
-    RC: "6.2%",
+    ROI: "15% daily",
+    RC: "8%",
     id: 4,
   },
 ];
@@ -236,33 +249,84 @@ export const headerData = [
   { name: "Contact us", url: "/contact", id: 5 },
 ];
 
-// NORMAL PAGE FOOTER
-// export const footerData = [
-//   { name: "Sign in", url: "/login", id: 3 },
-//   { name: "Sign up", url: "/register", id: 4 },
-//   { name: "About us", url: "/about", id: 1 },
-//   { name: "Developer", url: "/developer", id: 2 },
-// ];
+export const tradingPriviledges = [
+  {
+    name: "STOCKS ",
+    msg: "Invest in thousands of companies and fractional shares with as little as $5 using our trading tools and analytics to create your own financial portfolio. ",
+    icon: <RiSettingsFill className="text-[2rem]  text-red-500" />,
+    id: 3,
+  },
+  {
+    name: "OPTIONS",
+    msg: "Options provide a strategic alternative to just investing in equity.",
+    icon: <FaDatabase className="text-[2rem]  text-red-500" />,
+    id: 4,
+  },
+  {
+    name: "ETF'S",
+    msg: "Diversify your holdings by investing into a group of stocks with the same convenience as trading a single stock.",
+    icon: <BsFillWalletFill className="text-[2rem]  text-red-500" />,
+    id: 1,
+  },
+  {
+    name: "CRYPTO",
+    msg: "Diversify your holdings by investing in digital currencies including Bitcoin, Ethereum, Bitcoin Cash and Litecoin.",
+    icon: <FaBtc className="text-[2rem]  text-red-500" />,
+    id: 2,
+  },
+];
+
+export const whyChooseUs = [
+  {
+    name: "Transparent Pricing",
+    msg: "There are no hidden charges or fees that are not made known to you by your account manager. We have streamlined all our packages to suit perfectly well into all your needs, making considerations to accommodate you at every point.",
+
+    icon: <IoPricetag className="text-[3rem] mx-auto text-gray-500" />,
+    id: 1,
+  },
+
+  {
+    name: "Safe & Secure",
+    msg: "We have upgraded our system to a PCI/DSS complaint level, making every account to have a two factor authentication and a brute force attack protection. Be rest assured that your data, funds are safe in the hands of certified experts.",
+
+    icon: <GrSecure className="text-[3rem] mx-auto text-gray-500" />,
+    id: 2,
+  },
+
+  {
+    name: "Incredible Infrastructure",
+    msg: "Unlike other platforms, we are fully built on a No.1 infrastructure to ensure the best result delivery. Cryptonite markets is a certified PCI/DSS company, meaning that we have attained the level of security used by such companies as MasterCard, Visa, AMEX etc",
+    icon: <FaBuildingShield className="text-[3rem] mx-auto text-gray-500" />,
+    id: 3,
+  },
+
+  {
+    name: "Fully Encrypted",
+    msg: "All data on Cryptonite markets are fully encrypted on a one way hashing algorithm. This means that only you and our server knows what inputs you made and that which you did not make. This helps to ensure that all your funds remains yours and safe",
+    icon: <SiLetsencrypt className="text-[3rem] mx-auto text-gray-500" />,
+    id: 4,
+  },
+];
 
 // DASHBOARD FRAGMENT UI
 export const dashboardFooterData = [
   {
-    name: "Wallet",
+    name: "Home",
     url: "/dashboard",
-    comp: <FaWallet className="df-icon-stye" />,
+    comp: <IoHomeSharp className="df-icon-stye" />,
     id: 1,
   },
   {
     name: "Activity",
     url: "/dashboard/activity",
-    comp: <LuCandlestickChart className="df-icon-stye" />,
+    comp: <LuActivity className="df-icon-stye" />,
     id: 2,
   },
 
   {
     name: "Profile",
     url: "/dashboard/profile",
-    comp: <IoSettings className="df-icon-stye" />,
+    comp: <MdManageAccounts className="df-icon-stye" />,
     id: 4,
   },
 ];

@@ -7,28 +7,20 @@ const mongoose = require("mongoose");
 const { dbConn } = require("./config/dbConn.js");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes.js");
-// const fileUpload = require("express-fileupload");
-// const multer = require("multer");
-// const path = require("path");
-// const {
-//   uploadSong,
-//   getAllSongs,
-//   downLoadSong,
-//   deleteSong,
-//   getSpecificArtistSong,
-//   streamSong,
-// } = require("./middlewares/songMiddleware.js");
-// const verifyJwt = require("./middlewares/verifyJwt.js");
-// const isArtist = require("./middlewares/isArtist.js");
-// const { uploadSong } = require("./middlewares/songMiddleware.js");
-
-// const  { fileURLToPath } = require("url")
+// const Agenda = require("agenda");
 
 const app = express();
 
 dotenv.config();
 
+// const agenda = new Agenda();
+
 dbConn();
+
+// dbConnection.then(() => {
+//   agenda.mongo(mongoose.connection.db, "harvestuser");
+// });
+
 // console.log(dbConn.db);
 const port = process.env.PORT || 4000;
 

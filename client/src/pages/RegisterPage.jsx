@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import axios from "../api/axios";
 import * as EmailValidator from "email-validator";
 import { useNavigate, Link } from "react-router-dom";
 import { errorMsg } from "../helper/errorMsg";
 import { secretQuestions } from "../data";
+import regnow from "../assets/regnow.jpg";
 
 export default function RegisterPage() {
   // DESTRUCTURED USEFORM DATA
@@ -70,16 +71,22 @@ export default function RegisterPage() {
   // REGISTER PAGE CONTENT
   const content = (
     <main className="w-full min-h-screen    text-black  flex  flex-col py-2  justify-around  items-center  ">
-      <div>
-        {" "}
-        <span className="text-xl font-bold mr-1">Signup</span>{" "}
-        <FaRegCircleUser className="inline  text-[1.5rem] " />{" "}
-      </div>
-      <hr className="w-[50%] bg-black" />
+      <h1
+        className="text-[4rem]  font-extrabold text-red-500  text-balance"
+        style={{ textShadow: "4px 4px black" }}
+      >
+        Sign Up
+      </h1>
+
+      <p className="w-[70%]  text-gray-900  text-[0.8rem]  font-thin  text-center tracking-wide">
+        Create an account today to kickstart your earning process.
+      </p>
+
+      {/* <hr className="w-[50%] bg-black" /> */}
       {logicError && <p className="error-msg-style"> &#10005; {logicError}</p>}
       {loading && (
-        <ScaleLoader
-          color="white"
+        <PropagateLoader
+          color="red"
           cssOverride={{ height: "500", width: "500" }}
         />
       )}
@@ -97,11 +104,11 @@ export default function RegisterPage() {
             to have you.{" "}
           </h4> */}
           <label htmlFor="fullName" className="form-label-style ">
-            Fullname:{" "}
+            {/* Fullname:{" "} */}
           </label>
           <input
             type="text"
-            placeholder="Mike Morgan"
+            placeholder="Fullname*"
             id="fullName"
             {...register("fullName", {
               required: { value: true, message: "Please fill this field" },
@@ -113,7 +120,7 @@ export default function RegisterPage() {
             })}
             name="fullName"
             className={`form-input-style  ${
-              errors.fullName ? "border-red-400" : "border-green-500"
+              errors.fullName ? "border-red-400" : "border-gray-600"
             } `}
           />
           {errors?.fullName && errors?.fullName?.type == "required" && (
@@ -133,11 +140,11 @@ export default function RegisterPage() {
         {/* EMAIL  */}
         <div className="form-div-style">
           <label htmlFor="email" className="form-label-style ">
-            Email:{" "}
+            {/* Email:{" "} */}
           </label>
           <input
             type="text"
-            placeholder="mike@gmail.com"
+            placeholder="Email*"
             id="email"
             {...register("email", {
               required: { value: true, message: "Please fill this field" },
@@ -149,7 +156,7 @@ export default function RegisterPage() {
             })}
             name="email"
             className={`form-input-style  ${
-              errors?.email ? "border-red-400" : "border-green-500"
+              errors?.email ? "border-red-400" : "border-gray-600"
             } `}
           />
           {errors?.email && errors?.email?.type == "required" && (
@@ -169,11 +176,11 @@ export default function RegisterPage() {
         {/* PASSWORD  */}
         <div className="form-div-style">
           <label htmlFor="password" className="form-label-style ">
-            Password:{" "}
+            {/* Password:{" "} */}
           </label>
           <input
             type="text"
-            placeholder="MikePwd&44%"
+            placeholder="Password*"
             id="password"
             {...register("password", {
               required: { value: true, message: "Please fill this field" },
@@ -185,7 +192,7 @@ export default function RegisterPage() {
             })}
             name="password"
             className={`form-input-style  ${
-              errors.password ? "border-red-400" : "border-green-500"
+              errors.password ? "border-red-400" : "border-gray-600"
             } `}
           />
           {errors?.password && errors?.password?.type == "required" && (
@@ -205,11 +212,11 @@ export default function RegisterPage() {
         {/*  CONFIRM PASSWORD  */}
         <div className="form-div-style">
           <label htmlFor="confirmPassword" className="form-label-style ">
-            Confirm Password:{" "}
+            {/* Confirm Password:{" "} */}
           </label>
           <input
             type="text"
-            placeholder="MikePwd&44%"
+            placeholder="Confirm Password"
             id="confirmPassword"
             {...register("confirmPassword", {
               required: { value: true, message: "Please fill this field" },
@@ -222,7 +229,7 @@ export default function RegisterPage() {
             })}
             name="confirmPassword"
             className={`form-input-style  ${
-              errors.confirmPassword ? "border-red-400" : "border-green-500"
+              errors.confirmPassword ? "border-red-400" : "border-gray-600"
             } `}
           />
           {errors?.confirmPassword &&
@@ -269,7 +276,7 @@ export default function RegisterPage() {
             })}
             name="secretQuestion"
             className={`form-input-style  ${
-              errors.secretQuestion ? "border-red-400" : "border-green-500"
+              errors.secretQuestion ? "border-red-400" : "border-gray-600"
             } `}
           >
             {" "}
@@ -287,9 +294,10 @@ export default function RegisterPage() {
 
         <div className="form-div-style">
           <label htmlFor="secretAnswer" className="form-label-style ">
-            Secret Answer:{" "}
+            {/* Secret Answer:{" "} */}
           </label>
           <input
+            placeholder="Secret Answer"
             type="text"
             id="secretAnswer"
             {...register("secretAnswer", {
@@ -302,7 +310,7 @@ export default function RegisterPage() {
             })}
             name="secretAnswer"
             className={`form-input-style  ${
-              errors.secretAnswer ? "border-red-400" : "border-green-500"
+              errors.secretAnswer ? "border-red-400" : "border-gray-600"
             } `}
           />
           {errors?.secretAnswer && errors?.secretAnswer?.type == "required" && (
@@ -329,8 +337,11 @@ export default function RegisterPage() {
         {/* END OF SECRET ANSWER */}
         <input
           type="submit"
+          disabled={loading && true}
           value="Let's Go"
-          className="bg-[#0a572a]  text-white  text-xl tracking-wide rounded-lg  mx-auto block  p-2  lg:col-span-2"
+          className={` ${
+            loading ? "bg-gray-400" : "bg-red-500"
+          } text-white  text-xl tracking-wide   mx-auto block  px-[2rem]  py-[0.2rem]  text-[0.9rem]  font-serif  lg:col-span-2`}
         />
       </form>
       <p>

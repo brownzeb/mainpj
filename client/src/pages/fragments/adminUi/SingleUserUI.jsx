@@ -19,6 +19,8 @@ export default function SingleUserUi() {
   const [isLoading, setIsLoading] = useState(false);
   const [serverData, setServerData] = useState();
   const [update, setUpdate] = useState(false);
+  const [genProfit, setGenProfit] = useState(true);
+
   const [isAllowed, setIsAllowed] = useState(false);
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
@@ -100,6 +102,24 @@ export default function SingleUserUi() {
     shouldTouch: true,
   });
 
+  // START & STOP PROFIT FUNCTIONS
+
+  // const startGeneratingProfit = () => {
+  //   if (stopGenProfit === true) {
+  //     setStopGenProfit(false);
+  //   }
+
+  //   setStartGenProfit(true);
+  // };
+
+  // const stopGeneratingProfit = () => {
+  //   if (startGenProfit === true) {
+  //     setStartGenProfit(false);
+  //   }
+
+  //   setStopGenProfit(true);
+  // };
+
   // FORM SUBMITION
   const onSubmit = async (data) => {
     console.log(data);
@@ -119,6 +139,7 @@ export default function SingleUserUi() {
         invested: invested && invested != "" ? invested : "00.00",
         loss: loss && loss != "" ? loss : "00.00",
         profit: profit && profit != "" ? profit : "00.00",
+        genProfit,
       };
       const apiHeader = {
         headers: {
@@ -146,6 +167,16 @@ export default function SingleUserUi() {
     }
   };
 
+  // INTERVAL CALL
+
+  // const delay = 1000 * 2;
+
+  // const sayHi = () => {
+  //   console.log();
+  // };
+
+  // const intervalId = setInterval(sayHi, delay);
+
   // DELETE FUNC
 
   const delCall = async (userId) => {
@@ -166,12 +197,12 @@ export default function SingleUserUi() {
 
   const content = (
     <main className=" w-full  min-h-screen  flex  flex-col  gap-3  my-[4rem] justify-center  items-center">
-      <section className=" w-[98%] mx-auto   rounded-t-xl  bg-black text-white p-3  flex  flex-col  gap-3 justify-center  items-center ">
-        <h3 className="w-[80%] lg:w-[40%] h-[7rem]   shadow-md shadow-gray-500  rounded-full border-4  border-white  text-[6rem] mx-auto uppercase text-center   flex justify-center  items-center">
+      <section className=" w-[98%] mx-auto   rounded-t-xl  bg-gray-300 text-white p-3  flex  flex-col  gap-3 justify-start  items-center ">
+        {/* <h3 className="w-[80%] lg:w-[40%] h-[7rem]   shadow-md shadow-gray-500  rounded-full border-4  border-white  text-[6rem] mx-auto uppercase text-center   flex justify-center  items-center">
           {serverData?.fullName.charAt()}
-        </h3>
+        </h3> */}
 
-        <ul className="text-[1.2rem] font-bold tracking-wide   grid  grid-cols-1 lg:grid-cols-2  gap-3">
+        <ul className="text-[0.9rem] font-serif tracking-wide    text-gray-600   grid  grid-cols-1 lg:grid-cols-2  gap-3">
           <li>Fullname: {serverData?.fullName}</li>
           <li>Email: {serverData?.email}</li>
           <li>Plan: {serverData?.plan}</li>
@@ -188,20 +219,33 @@ export default function SingleUserUi() {
         </ul>
         <button
           onClick={() => delCall(id)}
-          className=" flex justify-center items-center   mx-auto  bg-red-500  text-white  rounded-lg  p-2 shadow-inner shadow-gray-400  text-[1.3rem] font-bold  tracking-wide"
+          className=" flex justify-center items-center   mx-auto  bg-red-500  text-white    py-[0.5rem] px-[2rem] shadow-inner shadow-gray-800  text-[1.3rem] font-thin  tracking-wide"
         >
-          <MdDeleteForever className="text-[1.5rem]" /> Delete{" "}
-          {serverData?.fullName.charAt()}
+          <MdDeleteForever className="text-[1.5rem] mr-[0.6rem]" /> Delete this
+          user{" "}
         </button>
       </section>
-      <section className="w-[98%]  mx-auto   flex flex-col  justify-around  items-center">
-        <h4 className="w-fit mx-auto font-bold text-[1.5rem] ">
-          Edit {serverData?.fullName} Details
+      <section className="w-[98%]  mx-auto  my-[1rem]   flex flex-col  justify-around  items-center">
+        <h4 className="w-fit mx-auto font-serif  text-balance  capitalize  tracking-wide text-red text-[1.5rem] ">
+          Edit user info
         </h4>
+
+        <div className="w-[90%]  mx-auto tex-center  shadow-lg  capitalize shadow-gray-500 flex flex-col  sm:flex-row  justify-center  items-center  gap-[1rem]  ">
+          <button
+            onClick={() => {
+              setGenProfit(!genProfit);
+            }}
+            className={`${
+              genProfit ? "bg-red-500  text-white" : "bg-green-500  text-black"
+            } tracking-wide font-serif  capitalize  px-[1rem]  py-[0.5rem]`}
+          >
+            {genProfit ? "Stop" : "Start"} generating profit
+          </button>
+        </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" w-[90%]   min-h-[10rem] flex flex-col lg:grid lg:grid-cols-2  gap-3  justify-center items-center p-2"
+          className=" w-[90%]   min-h-[10rem]  bg-slate-200 flex flex-col lg:grid lg:grid-cols-2  gap-3  justify-center items-center p-2"
         >
           {/* PLAN  */}
           <div className="form-div-style">
@@ -228,7 +272,7 @@ export default function SingleUserUi() {
               })}
               name="plan"
               className={`form-input-style  ${
-                errors.plan ? "border-red-400" : "border-green-500"
+                errors.plan ? "border-red-400" : "border-gray-500"
               } `}
             />
             {/* {errors?.plan && errors?.plan?.type == "required" && (
@@ -248,10 +292,11 @@ export default function SingleUserUi() {
           {/* BALANCE  */}
           <div className="form-div-style">
             <label htmlFor="balance" className="form-label-style ">
-              Balance:{" "}
+              Balance {"(Read Only)"}:{" "}
             </label>
             <input
               type="text"
+              readOnly={true}
               // placeholder={serverData?.balance}
               // defaultValue={serverData?.balance}
               id="balance"
@@ -261,7 +306,7 @@ export default function SingleUserUi() {
               })}
               name="balance"
               className={`form-input-style  ${
-                errors?.balance ? "border-red-400" : "border-green-500"
+                errors?.balance ? "border-red-400" : "border-gray-500"
               } `}
             />
             {/* {errors?.balance && errors?.balance?.type == "required" && (
@@ -277,7 +322,7 @@ export default function SingleUserUi() {
           {/* INVESTED */}
           <div className="form-div-style">
             <label htmlFor="invested" className="form-label-style ">
-              Invested:{" "}
+              Invested :{" "}
             </label>
             <input
               type="text"
@@ -290,7 +335,7 @@ export default function SingleUserUi() {
               })}
               name="invested"
               className={`form-input-style  ${
-                errors?.invested ? "border-red-400" : "border-green-500"
+                errors?.invested ? "border-red-400" : "border-gray-500"
               } `}
             />
             {/* {errors?.balance && errors?.balance?.type == "required" && (
@@ -306,10 +351,11 @@ export default function SingleUserUi() {
           {/* PROFIT  */}
           <div className="form-div-style">
             <label htmlFor="profit" className="form-label-style ">
-              Profit:{" "}
+              Profit {"(Read Only)"}:{" "}
             </label>
             <input
               type="text"
+              readOnly={true}
               // placeholder={serverData?.profit}
               // defaultValue={serverData?.profit}
               id="profit"
@@ -319,7 +365,7 @@ export default function SingleUserUi() {
               })}
               name="profit"
               className={`form-input-style  ${
-                errors?.profit ? "border-red-400" : "border-green-500"
+                errors?.profit ? "border-red-400" : "border-gray-500"
               } `}
             />
             {/* {errors?.profit && errors?.profit?.type == "required" && (
@@ -352,7 +398,7 @@ export default function SingleUserUi() {
               })}
               name="loss"
               className={`form-input-style  ${
-                errors.loss ? "border-red-400" : "border-green-500"
+                errors.loss ? "border-red-400" : "border-gray-500"
               } `}
             />
             {/* {errors?.loss && errors?.loss?.type == "required" && (
@@ -371,7 +417,7 @@ export default function SingleUserUi() {
 
           <button
             type="submit"
-            className="bg-[#0a572a]  text-white text-xl tracking-wide rounded-lg  mx-auto block  p-2  lg:col-span-2"
+            className="bg-green-600  text-black  tracking-wide  font-serif  mx-auto block   shadow-inner  shadow-gray-500  py-[0.5rem]  px-[1rem]  lg:col-span-2"
           >
             Update Now
           </button>

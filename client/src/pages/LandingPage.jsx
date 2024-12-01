@@ -1,10 +1,17 @@
 import singer from "../assets/singernobg.png";
 import coins from "../assets/coinsinphone.png";
 import crypto from "../assets/cryptos-removebg-preview.png";
-import investnow from "../assets/newbgimg.jpg";
+import investnow from "../assets/cryptobg.jpg";
 import balance from "../assets/walletballance-removebg-preview.png";
 import success from "../assets/success.jpg";
-import { domain, investmentPlans, numberData, userTestimonial } from "../data";
+import {
+  domain,
+  investmentPlans,
+  numberData,
+  userTestimonial,
+  tradingPriviledges,
+  whyChooseUs,
+} from "../data";
 // import ReactPlayer from "react-player";
 import { useEffect, useState } from "react";
 import axios from "../api/axios";
@@ -18,17 +25,20 @@ import { GiShieldReflect } from "react-icons/gi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import experts from "../assets/experts.jpg";
 import security from "../assets/security.jpg";
+import trade from "../assets/trade.jpg";
 import { IoStar } from "react-icons/io5";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from "react-responsive-carousel";
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
 import { SiYoutubemusic } from "react-icons/si";
 import { IoSearchSharp } from "react-icons/io5";
-// import { TickerTape } from "react-tradingview-embed";
+import belief from "../assets/illustrate.jpg";
+import company from "../assets/company.jpg";
+import tradebg from "../assets/tradebg.jpg";
+import tradeTime from "../assets/tradetime.jpg";
+import tradepc from "../assets/tradepcnobg.png";
+import connect from "../assets/connection.jpg";
+import pay from "../assets/pay.jpg";
+import startnow from "../assets/startnow.jpg";
+import choosepl from "../assets/choosepl.jpg";
+import { motion } from "framer-motion";
 
 export default function LandingPage() {
   const [err, setErr] = useState("");
@@ -37,19 +47,49 @@ export default function LandingPage() {
   const [width, setWidth] = useState(window.innerWidth);
   const [searchData, setSearchData] = useState("");
 
-
-
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//code.tidio.co/tsxe0jxicyh6jqofkheftwzluxeyiloo.js";
-    script.async = true;
-    document.body.appendChild(script);
+    // const script = document.createElement("script");
+    // script.src = "//code.tidio.co/tsxe0jxicyh6jqofkheftwzluxeyiloo.js";
+    // script.async = true;
+    // document.body.appendChild(script);
+
+    // for tawk
+
+    // <!--Start of Tawk.to Script-->
+    // const script = document.createElement("script")
+    // script.src = "//code.tidio.co/tsxe0jxicyh6jqofkheftwzluxeyiloo.js";
+
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/674b18d62480f5b4f5a6266a/1iduli25l";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
 
     // Cleanup function to remove the script when the component unmounts
     return () => {
-      document.body.removeChild(script);
+      // document.body.removeChild(script);
     };
   }, []);
+
+  //   <!--Start of Tawk.to Script-->
+  // <script type="text/javascript">
+  // var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  // (function(){
+  // var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  // s1.async=true;
+  // s1.src='https://embed.tawk.to/674b18d62480f5b4f5a6266a/1iduli25l';
+  // s1.charset='UTF-8';
+  // s1.setAttribute('crossorigin','*');
+  // s0.parentNode.insertBefore(s1,s0);
+  // })();
+  // </script>
+  // <!--End of Tawk.to Script-->
 
   // FOR CAROUSEL config
 
@@ -81,273 +121,137 @@ export default function LandingPage() {
     },
   };
 
-  // useEffect(() => {
-  //   const handleWidthResize = () => setWidth(window.innerWidth);
-  //   window.addEventListener("resize", handleWidthResize);
-
-  //   const fetchData = async () => {
-  //     let searchDataArray = [];
-  //     try {
-  //       setLoading(true);
-  //       const serverRes = await axios.get("/getallsongs", {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-
-  //       console.log(serverRes);
-  //       if (serverRes.status > 200) {
-  //         setErr(
-  //           serverRes?.data?.message
-  //             ? serverRes?.data?.message
-  //             : serverRes?.data
-  //         );
-  //       }
-
-  //       if (
-  //         searchData &&
-  //         searchData.length > 0 &&
-  //         typeof serverRes?.data?.allSongFile !== "undefined" &&
-  //         serverRes?.data?.allSongFile.length != 0
-  //       ) {
-  //         serverRes?.data?.allSongFile.map((data) => {
-  //           if (data?.filename.includes(searchData)) {
-  //             searchDataArray.push(data);
-  //           }
-  //         });
-  //       }
-
-  //       setAllsongs(
-  //         searchDataArray.length > 0
-  //           ? searchDataArray
-  //           : serverRes?.data?.allSongFile
-  //       );
-  //     } catch (error) {
-  //       const err = errorMsg(error);
-
-  //       setErr(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  //   return () => window.removeEventListener("resize", handleWidthResize);
-  // }, [searchData, setAllsongs]);
-
-  // console.log(allSongs);
-  // console.log(width);
-  // console.log(searchData);
-
   const content = (
     <main className="min-h-screen w-full  flex flex-col gap-4  z-0">
-      <section
+      <motion.section
+        // initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
         className={` w-full h-[30rem] bg-black text-white flex   justify-center items-center    bg-cover    bg-center bg-no-repeat  `}
         style={{ backgroundImage: `url(${investnow})` }}
       >
-        <div className=" w-[97%]  h-[78%]    flex flex-col  md:flex-row justify-start  items-start   ">
-          <h2 className=" w-[90%]  px-3   text-white   place-content-center  tracking-wide font-bold text-[1.3rem]   text-center md:text-left  ">
+        <div className=" w-full  h-full  pt-[1rem]  pl-[1rem]     bg-gradient-to-b  from-transparent from-70% to-white   flex flex-col  md:flex-row justify-start  items-start   ">
+          <motion.h2
+            animate={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className=" w-[90%] sm:w-[50%]  px-3   text-transparent bg-clip-text  bg-gradient-to-r  from-red-700 to-green-700  place-content-center  tracking-wide font-serif text-[1.5rem]  sm:text-[2rem]   text-center md:text-left  "
+          >
             Maximise your investment growth today with {" "}
-            <span className="text-yellow-500">{domain}</span>.
-          </h2>
-
-          {/* <hr className="w-[30%] mx-auto md:hidden  bg-white my-3" />
-
-          <p className=" w-[90%]  text-center  place-content-center    px-[1rem]  rounded-lg  tracking-wide   bg-black bg-opacity-90 text-white ">
-            {domain} is a reputable trading and crypto investment platform that
-            provides individuals and institutions with a reliable and secure
-            means of buying and selling cryptocurrencies.
-          </p> */}
+            <span className="text-black  capitalize">{domain}</span>.
+          </motion.h2>
         </div>
-      </section>
+      </motion.section>
 
       {/* trading widget */}
 
-      {/* WHO WE ARE & HOW IT WORKS */}
-      <section className="w-full min-h-auto md:flex md:justify-around items-center">
-        {/* WHO WE ARE */}
-        <section className=" w-full min-h-[20rem]    text-black  flex flex-col justify-around  items-center text-center p-2 ">
-          <h2 className="w-fit mx-auto font-black tracking-wide">
-            <b>Who we are</b>
-          </h2>
-          <p className="p-3  bg-white text-black tracking-wide  shadow-md shadow-gray-400">
-            At {domain}, we specialize in trading digital assets and providing
-            expert guidance to help maximize investments. Our team of
-            professionals is dedicated to staying updated with the latest market
-            trends and utilizing strategic techniques to ensure the growth of
-            our clients' portfolios. With a focus on transparency and
-            efficiency, we aim to empower individuals looking to navigate the
-            world of digital assets and make informed investment decisions.
-            Whether you are new to the crypto space or a seasoned investor,
-            Cryptobull is here to assist you in achieving your financial goals
-            with confidence and expertise.
-            <Link
-              to="/about"
-              className="text-blue-500 ml-1   font-bold tracking-wide "
-            >
-              Read More &#10138;
-            </Link>
-          </p>
-        </section>
-        {/* HOW IT WORKS */}
-        <section className=" w-full min-h-[10rem]   text-black  flex flex-col justify-center  items-center ">
-          <h1 className=" tracking-wide w-fit mx-auto  my-[2rem]  text-[1.2rem]  font-bold ">
-            How it works
-          </h1>
-          <ul className=" w-[80%] mx-auto text-left grid grid-cols-1 gap-3 list-decimal">
-            <li>
-              <Link className="text-blue-500  hover:underline hover:underline-offset-2 hover:transition-all delay-3000">
-                Create account &#10138;
-              </Link>
-            </li>
-            <li>Login into your account.</li>
-            <li>Fund your acount and choose a plan.</li>
-            <li>{domain} team of trading experts will trade your assets.</li>
-            <li>Watch your profit grows.</li>
-            <li>Withdraw your funds to your prefered wallet.</li>
-          </ul>
-        </section>
-      </section>
+      {/* ENJOY TECH ENJOY INVESTING  */}
 
-      {/* CRYPTO SECURITY */}
-
-      <section
-        className="w-full min-h-[10rem]  my-4  flex flex-col  gap-3 justify-around items-center"
-
-        // style={{backgroundImage: `url(${coins})`}}
+      <motion.section
+        animate={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[90%]  mx-auto my-[1rem]  min-h-full text-left  sm:text-center "
       >
-        <h3 className=" w-fit mx-auto tracking-wide  text-[1.2rem]  font-bold">
-          Crypto Security
-        </h3>
+        <h2 className="font-bold  text-opacity-80   my-[1rem] capitalize  text-red-500">
+          Enjoy Tech. Enjoy Investing
+        </h2>
+        <p className="font-light sm:w-[70%]  sm:mx-auto text-gray-500">
+          20% commission and $1000 minimum deposit. Everyone gets smart tools
+          for smart investing. With the most reliable and simplified investment
+          management performs that mine cryptocurrency, indices and trades
+          forex.{" "}
+        </p>
 
-        <article className="w-[98%]  mx-auto  flex flex-col  gap-3   justify-around  items-center">
-          <img src={coins} alt="security" className="w-full  mx-auto" />
+        <Link className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  ">
+          Get started
+        </Link>
+        <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
+          {" "}
+          Read More
+        </Link>
+      </motion.section>
 
-          {/* <img
-            src="https://d33vw3iu5hs0zi.cloudfront.net/media/exness_phone_home_page_9e8292cbcc.jpg"
-            alt="phone.jpg"
-            className="w-full"
-          /> */}
+      <motion.section
+        animate={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="w-[90%]  my-[4rem]  mx-auto text-left sm:text-center  "
+      >
+        <h2 className="text-red-500 font-serif text-[2rem]  tracking-wide ">
+          Trading Privileges
+        </h2>
+        <h5 className="  sm:w-[70%]  mx-auto   font-extralight tracking-wide  ">
+          Diversifying your portfolio with a comprehensive suite of investment
+          products including stocks, fractional shares, options, ETFs, and ADRs.
+        </h5>
 
-          <div className="w-[80%]  mx-auto  flex justify-around  items-center">
-            <SiHackaday className="text-[2rem]  text-red-500" />
-            <FaArrowRightLong className="animate-pulse text-[0.8rem]" />
+        <ul className=" w-[98%] mx-auto  grid grid-cols-1  sm:grid-cols-2  lg:grid-cols-4 my-[1rem] place-content-center  gap-4    ">
+          {tradingPriviledges.map((data) => (
+            <motion.li
+              key={data.id}
+              animate={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className=" w-[90%] mx-auto  min-h-[14rem]  lg:h-[18rem]    p-[0.8rem]  bg-opacity-20 bg-blue-500  "
+            >
+              <div className=" flex   flex-col  justify-around    items-center gap-3">
+                <h4 className="font-serif">{data.name}</h4>
+                {data.icon}
+                <p className="p-[0.4]  text-[0.9]">{data.msg}</p>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.section>
 
-            <GiShieldReflect className="text-[2rem]  text-green-500 " />
-            <FaArrowRightLong className="animate-pulse text-[0.8rem]" />
+      {/*financial freedom  */}
 
-            <MdSecurity className="text-[2rem] text-green-500" />
-            <FaArrowRightLong className="animate-pulse text-[0.8em]" />
-            <BsCurrencyExchange className="text-[2rem]  text-[#3d79b2]" />
+      <motion.section
+        animate={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="w-[90%] text-left sm:text-center   mx-auto"
+      >
+        <h2 className="text-[1.4rem]  my-[1rem]  mx-auto font-serif">
+          Route to Sustainable Financial Freedom
+        </h2>
+
+        <div className="flex   flex-col sm:flex-row  justify-around  items-center  gap-2">
+          <div className="w-full  ">
+            <img src={trade} alt="phone" className="w-full h-full" />
           </div>
 
-          <p className=" w-[97%] mx-auto  text-center p-3 ">
-            Ensuring secure crypto from hackers in Cryptobull is of utmost
-            importance to protect your digital assets. As a professional
-            platform, Cryptobull employs cutting-edge encryption technology and
-            robust security measures to safeguard your investments against
-            potential cyber threats. By continuously monitoring and enhancing
-            their security protocols, Cryptobull aims to provide users with a
-            safe and reliable environment for conducting cryptocurrency
-            transactions. Rest assured that your assets are in good hands on
-            Cryptobull, where security is a top priority.
-          </p>
-        </article>
-      </section>
+          <div>
+            <p>
+              {domain} markets has been growing fast by expanding trade industry
+              and cryptocurrency Exchange Performed by Qualified Professional
+              Traders. Let Our Pro Trade For You
+            </p>
 
-      {/* INVESTMENT PLANS */}
-      <section className="w-full flex flex-col text-center  gap-5 lg:flex-row justify-center  items-center  p-4  ">
-        <h5 className="text-[1.3rem]  text-center  mx-auto  font-bold text-[#111335]   tracking-wider p-[1rem] ">
-          Choose your most prefered plan and initate your earning process today.
-        </h5>
-        <img src={experts} alt="experts" className="" />
-      </section>
-      <section className="w-[98%] mx-auto my-3  grid  gap-2   grid-cols-2 md:grid-cols-4">
-        {investmentPlans.map((data) => (
-          <div
-            key={data.id}
-            className=" w-full min-h-full    flex flex-col    gap-3 p-1  justify-around  items-center  shadow-xl shadow-gray-600"
-          >
-            <h3 className="text-[1.1rem] tracking-wide  font-bold  text-black">
-              {data.name}
-            </h3>
-            <ul className=" min-w-full  h-full flex  gap-2 flex-col justify-around  items-center">
-              <li className="li-plan-style">
-                <span>Captital back:</span>
-                <span>{data.CB}</span>
-              </li>
-              <li className="li-plan-style">
-                <span>Min Amount:</span>
-                <span>{data.minAmount}</span>
-              </li>
-              <li className="li-plan-style">
-                <span>Max Amount:</span>
-                <span>{data.maxAmount}</span>
-              </li>
-              <li className="li-plan-style">
-                <span>ROI:</span>
-                <span>{data.ROI}</span>
-              </li>
-              <li className="li-plan-style">
-                <span>Referal Commission:</span>
-                <span>{data.RC}</span>
-              </li>
-            </ul>
-
-            <Link
-              className="bg-[#99c2e9] p-3 text-center text-[1.1rem] tracking-wide  my-2  rounded-md text-black shadow-xl shadow-gray-600"
-              to="/register"
-            >
-              Choose Plan &#10138;
+            <Link className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  ">
+              Get started
+            </Link>
+            <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
+              {" "}
+              Read More
             </Link>
           </div>
-        ))}
-      </section>
-      {/* NUMBERS THAT MADE US */}
-      <section className="min-h-[10rem] w-full    bg-gray-900  text-white  flex flex-col justify-around  items-center  p-2">
-        <h2 className=" min-w-fit     break-words  uppercase md:text-xl  text-lg my-3  mx-auto font-bold tracking-wider ">
-          The numbers that make up {domain}
-        </h2>
-        <img
-          src={success}
-          alt="coin"
-          height={400}
-          width={400}
-          className=" w-full  mx-auto"
-        />
-        <hr className="w-[5rem]  mx-auto bg-white  my-3" />
-        <p className="w-[85%] mx-auto p-2 text-center">
-          {" "}
-          From trading volume to the number of active clients, we are happy to
-          share out the figure that makes us one of the world's leading crypto
-          investment company.
-        </p>
-        <article className="grid grid-cols-2 lg:grid-cols-4  gap-3">
-          {numberData.map((data) => (
-            <div
-              key={data.id}
-              className="flex flex-col justify-around gap-2 items-center text-center p-1"
-            >
-              <h4>
-                <b>{data.name}</b>
-              </h4>
-              <p>{data.msg}</p>
-            </div>
-          ))}
-        </article>
-      </section>
+        </div>
+      </motion.section>
 
       {/* TESTIMONIALS */}
-      <section className="w-full ">
-        <h2 className="w-fit mx-auto text-[1.5rem] tracking-wide">
-          what our clients are saying.
+      <section className="w-full  my-[5rem] ">
+        <h2 className="w-fit mx-auto text-[1.5rem]  my-[1rem]  font-serif   tracking-wide">
+          Client Reviews
         </h2>
 
         <div className="  w-[90%] min-h-[10rem] mx-auto  py-2  my-4 flex justify-around  gap-4  items-center  overflow-scroll">
           {userTestimonial.map((data) => (
             <figure
               key={data.id}
-              className=" min-w-[70%]  min-h-full  border-2 border-yellow-500   py-2  flex  gap-4  flex-col justify-around  items-center   shadow-lg shadow-gray-500"
+              className=" min-w-[70%]  h-[30rem]  border-t-2  text-gray-400  border-t-red-500 bg-gray-100   py-2  flex  gap-4  flex-col justify-around  items-center   shadow-lg shadow-gray-500"
             >
               <img
                 src={data.imgUrl}
@@ -379,6 +283,309 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
+
+      <motion.section
+        animate={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[90%]  mx-auto "
+      >
+        <motion.h1
+          animate={{ opacity: 0, y: -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="  min-w-fit  text-[1.5rem] sm:text-center  font-serif  tracking-wide my-[1rem] mx-auto text-red-500 "
+        >
+          Why Choose Us
+        </motion.h1>
+
+        <ul className=" w-[98%] mx-auto   grid grid-cols-1  sm:grid-cols-2     my-[1rem] place-content-center  gap-3    ">
+          {whyChooseUs.map((data) => (
+            <motion.li
+              animate={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5 }}
+              key={data.id}
+              className=" w-[90%] mx-auto        p-[0.8rem]  bg-opacity-20 shadow-md  shadow-gra-500 rounded-[1rem]  bg-white text-gray-400 "
+            >
+              <div className=" flex  text-center flex-col  justify-around  items-center gap-3">
+                <h4 className="font-serif  font-[1.1rem]   text-gray-600 tracking-wide ">
+                  {data.name}
+                </h4>
+                {data.icon}
+                <p>{data.msg}</p>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.section>
+
+      {/* OUR BELIEF */}
+      <motion.section
+        animate={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[90%]  mx-auto  "
+      >
+        <motion.h2
+          animate={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="min-w-fit  text-left  sm:text-center mx-auto  text-[2rem]  font-serif"
+        >
+          Our Belief
+        </motion.h2>
+
+        <motion.article
+          animate={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className=" w-full    bg-center bg-cover bg-no-repeat  flex flex-col sm:flex-row justify-center  items-center  gap-3    "
+        >
+          <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div>
+          <div className="w-full h-full   flex flex-col    justify-center  items-center gap-3    text-left  p-[1rem]  bg-gradient-to-b  from-transparent  from-80% to-white  ">
+            <p className="my-[1rem]">
+              Individuals are an important part of the market and should not be
+              ignored. They should be empowered with better information, tools,
+              services, opportunities, and lower costs. Respecting the investor
+              is respecting the market.
+            </p>
+            <p>
+              Technology is the investor’s best friend. It vastly expands the
+              human’s trading capabilities in terms of time, scale, and
+              technique. Technology is the future.
+            </p>
+          </div>
+        </motion.article>
+      </motion.section>
+
+      {/* legal companies */}
+
+      <motion.section
+        animate={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[90%]  my-[5rem]  mx-auto  "
+      >
+        <motion.h2
+          animate={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif"
+        >
+          Legal Company
+        </motion.h2>
+
+        <article className=" w-full    bg-center bg-cover bg-no-repeat  flex flex-col sm:flex-row justify-center  items-center  gap-3    ">
+          {/* <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div> */}
+          <motion.p
+            animate={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+            className=" w-full sm:w-[70%]   p-3  tracking-wide  "
+          >
+            {domain} markets Financial LLC is registered with and regulated by
+            the Securities and Exchange Commission (SEC) and the Financial
+            Industry Regulatory Authority (FINRA). It is also a member of the
+            SIPC, which protects (up to $500,000, which includes a $250,000
+            limit for cash) against the loss of cash and securities held by a
+            customer at a financially-troubled SIPC-member brokerage firm.
+            <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
+              {" "}
+              Read More
+            </Link>
+          </motion.p>
+
+          <div className="w-full h-full  ">
+            <img src={company} alt="company" className="w-full  h-full" />
+          </div>
+        </article>
+      </motion.section>
+
+      {/* world class forex */}
+
+      <motion.section
+        animate={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[99%]  p-[1rem] border-r-4  border-r-red-500 border-t-4 border-t-red-500  bg-gradient-to-b  sm:bg-gradient-to-l  from-gray-200  to-60%   to-transparent   text-black   my-[5rem]  mx-auto  "
+      >
+        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
+          Legal Company
+        </h2> */}
+
+        <article className=" w-full  sm:w-[99%]     mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
+          {/* <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div> */}
+          <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
+            <h2 className="text-[1.5rem] p-[0.7rem] font-serif   bg-clip-text  text-transparent  bg-gradient-to-r  from-red-800 to-green-800">
+              World class forex trading and capital investment company{" "}
+            </h2>
+
+            <div className="w-full  sm:hidden    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300  ">
+              <img src={tradepc} alt="tradepc" className="w-full  h-full" />
+            </div>
+            <p className=" w-full  p-[0.7rem] border-l-2  border-l-green-500   border-t-2  border-t-green-500   font-light  text-[1.1rem]  text-gray-600      tracking-wide  ">
+              Established with the vision of impacting the general populace with
+              the knowledge of trading Forex and creating platforms that will
+              bring about sustainable financial freedom. With over 10 thousand
+              active investors, more than 10 business locations in London and
+              our new offices in the United Arab Emirates (UAE) and the United
+              Kingdom (UK)
+            </p>
+          </div>
+
+          <div className="w-full   hidden  sm:block    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300   ">
+            <img src={tradepc} alt="tradepc" className="w-full    h-full" />
+          </div>
+        </article>
+      </motion.section>
+
+      {/* STAY CONNECTED */}
+
+      <motion.section
+        animate={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="w-[99%]  p-[1rem]        text-black   my-[2rem]  mx-auto  "
+      >
+        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
+          Legal Company
+        </h2> */}
+
+        <article className=" w-full  sm:w-[99%]    mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
+          <div className="w-full   hidden  sm:block    border-none   ">
+            <img src={connect} alt="tradepc" className="w-full    h-full" />
+          </div>
+          <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
+            <h2 className="text-[1.5rem] p-[0.7rem] font-serif     text-black">
+              Stay Connected 24/7{" "}
+            </h2>
+
+            <div className="w-full  sm:hidden    border-none   ">
+              <img src={connect} alt="tradepc" className="w-full  h-full" />
+            </div>
+            <p className=" w-full  p-[0.7rem] border-l-2  border-l-gray-400   border-t-2  border-t-gray-400   font-light  text-[1.1rem]  text-gray-600      tracking-wide  ">
+              Our customer service reps are ready 24/7 to help guide you through
+              our multiple platforms and answer all your questions!
+            </p>
+          </div>
+
+          {/* <div className="w-full   hidden  sm:block    border-none   ">
+            <img src={connect} alt="tradepc" className="w-full    h-full" />
+          </div> */}
+        </article>
+      </motion.section>
+
+      {/* CRYPTO SECURITY */}
+
+      {/* INVESTMENT PLANS */}
+      <section className=" w-full  text-black  bg-white">
+        <section className="w-full flex flex-col text-center  gap-5 lg:flex-row justify-center  items-center  p-4  ">
+          <motion.h5
+            animate={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+            className="text-[1.5rem]  text-center  mx-auto  font-serif  tracking-wider p-[0.3rem] "
+          >
+            Initiate your earning process by selecting your most prefered plan
+          </motion.h5>
+          <img src={choosepl} alt="experts" className="" />
+        </section>
+        <motion.section
+          animate={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="w-[98%] mx-auto my-3        grid  gap-4   grid-cols-2 "
+        >
+          {investmentPlans.map((data) => (
+            <div
+              key={data.id}
+              className=" w-full  md:w-[90%]  md:mx-auto min-h-full  bg-gray-100     flex flex-col    gap-3 p-1  justify-around  items-center "
+            >
+              <h3 className="text-[1.1rem] tracking-wide  font-bold  text-black">
+                {data.name}
+              </h3>
+              <motion.ul
+                animate={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5 }}
+                className=" min-w-full  h-full flex  gap-2 flex-col justify-around  p-[0.5rem]  border-2  border-gray-400 items-center"
+              >
+                <li className="li-plan-style">
+                  <span className="plan-field-style">Captital back:</span>
+                  <span className="plan-value-style">{data.CB}</span>
+                </li>
+                <li className="li-plan-style">
+                  <span className="plan-field-style">Min Amount:</span>
+                  <span className="plan-value-style">{data.minAmount}</span>
+                </li>
+                <li className="li-plan-style">
+                  <span className="plan-field-style">Max Amount:</span>
+                  <span className="plan-value-style">{data.maxAmount}</span>
+                </li>
+                <li className="li-plan-style">
+                  <span className="plan-field-style">ROI:</span>
+                  <span className="plan-value-style">{data.ROI}</span>
+                </li>
+                <li className="li-plan-style">
+                  <span className="plan-field-style">Referal Commission:</span>
+                  <span className="plan-value-style">{data.RC}</span>
+                </li>
+              </motion.ul>
+
+              <Link
+                className="bg-gradient-to-r  px-[1rem]  py-[0.3rem]    text-center text-[1.1rem] tracking-wide  font-serif  bg-red-800  my-2   text-white shadow-inner shadow-gray-500"
+                to="/register"
+              >
+                Choose Plan
+              </Link>
+            </div>
+          ))}
+        </motion.section>
+      </section>
+
+      {/* CREATE AN ACCOUNT  */}
+
+      <section className="w-[99%]  p-[1rem] border-r-4     bg-white  text-black   my-[2rem]  mx-auto  ">
+        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
+          Legal Company
+        </h2> */}
+
+        <article className=" w-full  sm:w-[99%]     mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
+          {/* <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div> */}
+          <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
+            <h2 className="text-[1.5rem] p-[0.7rem] font-serif   text-black">
+              Open a {domain} markets Account Now{" "}
+            </h2>
+
+            <div className="w-full  sm:hidden    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300  ">
+              <img src={startnow} alt="tradepc" className="w-full  h-full" />
+            </div>
+            <p className=" w-full  p-[0.7rem]   font-light  text-[1.1rem]  text-gray-600      tracking-wide  ">
+              Open your Cryptonite markets individual brokerage account and IRAs
+              now! {domain} markets Financial LLC is member of FINRA, SIPC,
+              NASDAQ and NYSE
+            </p>
+          </div>
+
+          <div className="w-full   hidden  sm:block    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300   ">
+            <img src={startnow} alt="tradepc" className="w-full    h-full" />
+          </div>
+        </article>
+      </section>
+      {/* NUMBERS THAT MADE US */}
+      {/* chat  */}
+      {/* <section className="w-[80%]    h-[10rem]  mx-auto  bg-red-500   fixed  bottom-0 right-0 ">
+        <button>message us</button>
+      </section> */}
     </main>
   );
 

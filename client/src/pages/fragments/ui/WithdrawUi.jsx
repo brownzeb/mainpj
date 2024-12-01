@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import { PiHandWithdrawFill } from "react-icons/pi";
 // import axios from "axios";
 import * as EmailValidator from "email-validator";
 import { useNavigate, Link, useOutletContext } from "react-router-dom";
@@ -13,6 +14,7 @@ import { walletTypes } from "../../../data";
 import useRouteProtect from "../../../hooks/useRouteProtect";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 // import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import { GrStatusGood } from "react-icons/gr";
 
 export default function WithdrawUi() {
   // DESTRUCTURED USEFORM DATA
@@ -114,7 +116,7 @@ export default function WithdrawUi() {
       // throw new Error(error);
     } finally {
       reset();
-      // setIsloading(false);
+      setIsloading(false);
       setWthdUi((p) => ({ ...p, isLoading: false }));
     }
   };
@@ -124,26 +126,34 @@ export default function WithdrawUi() {
   // console.log("hello");
   // REGISTER PAGE CONTENT
   const content = (
-    <main className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-around  items-center  ">
-      <div>
+    <main className="w-full min-h-screen     text-black  flex  flex-col py-16  justify-start  items-center  ">
+      <div className="flex flex-col  justify-center  items-center gap-[0.5rem]">
         {" "}
-        <span className="text-xl font-bold mr-1">Withdraw Funds</span>{" "}
-        <FaRegCircleUser className="inline  text-[1.5rem] " />{" "}
+        <h2
+          className="text-[1.5rem] text-red-500 font-serif   "
+          style={{ textShadow: "2px 2px darkgray" }}
+        >
+          Withdraw Funds
+        </h2>{" "}
+        <PiHandWithdrawFill className="  text-red-500 text-[4rem] " />{" "}
       </div>
-      <hr className="w-[50%] bg-black" />
+      {/* <hr className="w-[50%] bg-black" /> */}
 
       {withdUi?.errMsg && withdUi?.isError === true ? (
         <p className="error-msg-style ">{withdUi?.errMsg}</p>
       ) : loading ? (
-        <ScaleLoader
-          color="white"
+        <PropagateLoader
+          color="red"
           cssOverride={{ height: "500", width: "500" }}
         />
       ) : (
         withdUi &&
         withdUi?.isError === false &&
         withdUi?.succMsg && (
-          <p className="text-green-500 tracking-wide">{withdUi?.succMsg}</p>
+          <p className="text-gray-600 tracking-wide text-[0.9rem] font-thin ">
+            {withdUi?.succMsg}{" "}
+            <GrStatusGood className="inline text-green-500" />
+          </p>
         )
       )}
 
@@ -167,7 +177,7 @@ export default function WithdrawUi() {
             })}
             name="withdrawalAmount"
             className={`form-input-style  ${
-              errors?.withdrawalAmount ? "border-red-400" : "border-green-500"
+              errors?.withdrawalAmount ? "border-red-400" : "border-gray-500"
             } `}
           />
           {errors?.withdrawalAmount &&
@@ -201,7 +211,7 @@ export default function WithdrawUi() {
             })}
             name="walletType"
             className={`form-input-style  ${
-              errors.walletType ? "border-red-400" : "border-green-500"
+              errors.walletType ? "border-red-400" : "border-gray-500"
             } `}
           >
             {" "}
@@ -233,7 +243,7 @@ export default function WithdrawUi() {
               },
             })}
             className={`form-input-style  ${
-              errors.walletAddr ? "border-red-400" : "border-green-500"
+              errors.walletAddr ? "border-red-400" : "border-gray-500"
             } `}
           />
           {errors?.walletAddr && errors?.walletAddr?.type === "required" && (
@@ -252,7 +262,8 @@ export default function WithdrawUi() {
 
         <input
           type="submit"
-          className="bg-[#0a572a]  text-xl tracking-wide rounded-lg  mx-auto block  p-2"
+          value="Proceed"
+          className="bg-red-500  text-xl tracking-wide rounded-lg  mx-auto block  py-2 text-white px-[2rem]"
         />
       </form>
     </main>

@@ -1,140 +1,175 @@
-import { domain } from "../data";
-import { team, services } from "../data";
+import { team, services, whyChooseUs, domain } from "../data";
 import trade from "../assets/iphone-trade-removebg-preview.png";
 import about from "../assets/about.jpg";
+import belief from "../assets/illustrate.jpg";
+import tradepc from "../assets/tradepc.jpg";
+import rise from "../assets/risecomp.jpg";
+import choose from "../assets/whychooseus.jpg";
+import mine from "../assets/mine.png";
 
 export default function About() {
   const content = (
-    <main className="min-h-screen w-full bg-white ">
-      {/* image styling section */}
-      <section
-        id="about-head"
-        className="w-full md:h-[30rem] h-[20rem] pl-4  bg-gray-200 relative pt-2"
-      >
-        <h2 className=" font-bold text-[1.3rem]  tracking-wide   capitalize  ">
-          About {domain}
-        </h2>
-        <div className=" h-1 w-[12rem] right-7 bg-blue-500  "></div>
-
-        <div className=" w-1 h-[12rem] bg-blue-500  "></div>
-
-        <article className="w-[80%] h-[80%]   bg-transparent  right-0 bottom-0  flex flex-col  justify-around  items-center  absolute">
-          <img src={about} alt="abt" className=" min-w-full   min-h-full" />
-        </article>
-      </section>
-
-      {/* WHO WE ARE */}
-
-      <section className=" w-full min-h-[20rem]    text-black  flex flex-col justify-around  items-center text-center p-2 ">
-        <h2 className="w-fit mx-auto font-black tracking-wide">
-          <b>Who we are</b>
-        </h2>
-        <p className="p-3  bg-white text-black tracking-wide  shadow-md shadow-gray-400">
-          At {domain}, we specialize in trading digital assets and providing
-          expert guidance to help maximize investments. Our team of
-          professionals is dedicated to staying updated with the latest market
-          trends and utilizing strategic techniques to ensure the growth of our
-          clients' portfolios. With a focus on transparency and efficiency, we
-          aim to empower individuals looking to navigate the world of digital
-          assets and make informed investment decisions. Whether you are new to
-          the crypto space or a seasoned investor, Cryptobull is here to assist
-          you in achieving your financial goals with confidence and expertise.
-        </p>
-      </section>
-
-      {/* OUR GOAL */}
-      <section className="w-full text-center  ">
-        <h2 className="  mx-auto  text-center font-black tracking-wider my-5">
-          Our Goal
-        </h2>
-        <p className="text-center p-3 ">
-          In the world of trading, especially in platforms like Cryptobull, the
-          primary objective for investors is always to maximize their profit
-          potential. By strategically analyzing market trends, utilizing risk
-          management techniques, and staying informed about current market
-          conditions, investors aim to make well-informed trades that can result
-          in optimal financial gains. Successful trading on Cryptobull often
-          involves a combination of technical analysis, fundamental analysis,
-          and a deep understanding of various cryptocurrencies. Through diligent
-          research, timely decision-making, and disciplined trading strategies,
-          investors strive to achieve their profit objectives and navigate the
-          volatile landscape of the digital assets market with professionalism
-          and expertise.
-        </p>
-      </section>
-      <section id="service" className="w-full my-6  scroll-smooth  ">
-        <h2 className=" min-w-fit  text-center  mx-auto  font-black tracking-wider my-5">
-          Our Services
+    <main className="min-h-screen w-full my-[1rem]    text-black ">
+      {/* WHO WE ARE  */}
+      <section className="w-[90%]  mx-auto  ">
+        <h2 className="min-w-fit  text-left  sm:text-center mx-auto  text-[2rem]  font-serif">
+          Who We Are
         </h2>
 
-        <img
-          src={trade}
-          alt="trade"
-          className="    border-2   border-gray-400   rounded-full mx-auto "
-        />
-        {services.map((data) => (
-          <div
-            key={data.id}
-            className="w-[80%] mx-auto  flex flex-col justify-center  items-center  "
-          >
-            <div className=" w-1 h-[3rem] mx-auto bg-black  "></div>
-            <div className=" border-2 border-gray-500  bg-white  text-black  p-2  rounded-r-xl">
-              <h5 className="mx-auto text-yellow-700 font-bold text-[1.2rem] underline underline-offset-2 tracking-wide">
-                {data.head}
-              </h5>
-              <p>{data.msg}</p>
-            </div>
+        <article className=" w-full    bg-center bg-cover bg-no-repeat  flex flex-col sm:flex-row justify-center  items-center  gap-3    ">
+          <div className="w-full h-full  ">
+            <img src={rise} alt="belief" className="w-full  h-full" />
           </div>
-        ))}
-      </section>
-      {/* OUR TEAM */}
-      <section className="w-full  flex  flex-col  justify-around  items-center">
-        <h2 className="font-black tracking-wider my-5">Our Team</h2>
-        <article className="w-[98%]  mx-auto flex flex-col justify-around gap-6 items-center ">
-          {team.map((data) => (
-            <div
-              key={data.id}
-              className="w-[99%]  mx-auto flex  justify-around  gap-3 items-center"
-            >
-              <figure className="w-[85%] flex flex-col justify-around gap-2  items-center">
-                <img
-                  src={data.imgUrl}
-                  alt="myphoto"
-                  className="rounded-full  w-[60%]   h-[60%]"
-                />
-                <figcaption className="capitalize  mx-auto font-bold tracking-wide">
-                  {data.name}
-                </figcaption>
-                <figcaption className="text-gray-900  mx-auto">
-                  {data.role}
-                </figcaption>
-              </figure>
-              <div className=" w-1 h-[9rem] bg-black  "></div>
-              <div className="text-center ">
-                <h4 className="mx-auto font-serif unserline underline-offset-2 ">
-                  {data.name} as a {data.role}
-                </h4>
-                <p className=" w-[98%]  mx-auto text-gray-500  text-[0.9rem] tracking-wide">
-                  {data.msg}
-                </p>
-              </div>
-            </div>
-          ))}
+          <div className="w-full h-full   flex flex-col    justify-center  items-center gap-3    text-left  p-[1rem]  bg-gradient-to-b  from-transparent  from-80% to-white  ">
+            <p className="my-[1rem]">
+              We are a financial company with the customer at heart, the
+              internet as our foundation, and technology as our lifeblood. Our
+              leadership has extensive experience in both the internet and
+              financial industries. We are committed to synergizing technology
+              with finance by providing reliable, professional, intelligent and
+              efficient products and services. Enjoy Tech. Enjoy Investing.
+            </p>
+          </div>
         </article>
       </section>
-      {/* COLLABORATING COMPANIES */}
-      <section className="w-full px-2">
-        <h2 className="  min-w-fit mx-auto  text-center font-black tracking-wider my-5">
-          Our Collaborators
+
+      {/* WHY CHOOSE US */}
+
+      <section className="w-[90%]  mx-auto ">
+        <h1 className="  min-w-fit  text-[1.5rem] sm:text-center  font-serif  tracking-wide my-[1rem] mx-auto text-black ">
+          Why Choose Us
+        </h1>
+
+        <ul className=" w-[98%] mx-auto   grid grid-cols-1  sm:grid-cols-2  lg:grid-cols-4 my-[1rem] place-content-center  gap-3    ">
+          {whyChooseUs.map((data) => (
+            <li
+              key={data.id}
+              className=" w-[90%] mx-auto        p-[0.8rem]  bg-opacity-20 shadow-md  shadow-gra-500 rounded-[1rem]  bg-white text-gray-400 "
+            >
+              <div className=" flex  text-center flex-col  justify-around  items-center gap-3">
+                <h4 className="font-serif  font-[1.1rem]   text-gray-600 tracking-wide ">
+                  {data.name}
+                </h4>
+                {data.icon}
+                <p>{data.msg}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* INTEGRATED SYSTEMS */}
+
+      <section className="w-[99%]  p-[1rem]    text-black   my-[2rem]  mx-auto  ">
+        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
+          Legal Company
+        </h2> */}
+
+        <article className=" w-full  sm:w-[99%]     mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
+          {/* <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div> */}
+          <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
+            <h2 className="text-[1.5rem] p-[0.7rem] font-serif   bg-clip-text  text-transparent  bg-gradient-to-r  from-red-800 to-green-800">
+              A Fully Integrated system for large Crypto Mining and Trading
+              system{" "}
+            </h2>
+
+            <div className="w-full  sm:hidden    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300  ">
+              <img src={mine} alt="tradepc" className="w-full  h-full" />
+            </div>
+            <p className=" w-full  p-[0.7rem] border-l-2  border-l-green-500   border-t-2  border-t-green-500   font-light  text-[1.1rem]  text-gray-600      tracking-wide  ">
+              We provide you with the most advanced trading platform and
+              extremely fast trading execution. We offer popular products for
+              different types of traders on the world's major stock exchanges.
+              Individuals are an important part of the market and should not be
+              ignored. They should be empowered with better information, tools,
+              services, opportunities, and lower costs. Respecting the investor
+              is respecting the market. Technology is the investor’s best
+              friend. It vastly expands the human’s trading capabilities in
+              terms of time, scale, and technique. Technology is the future.
+              What
+            </p>
+          </div>
+
+          <div className="w-full   hidden  sm:block    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300   ">
+            <img src={mine} alt="tradepc" className="w-full    h-full" />
+          </div>
+        </article>
+      </section>
+
+      {/* WHO WE ARE  */}
+      <section className="w-[90%]  mx-auto  ">
+        <h2 className="min-w-fit  text-left  sm:text-center mx-auto  text-[2rem]  font-serif">
+          What We Offer
         </h2>
-        <div className="w-[98%]  mx-auto flex justify-around  my-4 text-gray-600 items-center  gap-3  text-[2rem]   font-bold overflow-scroll">
-          <div>exness.com</div>
-          <div>coinmarketcap.com</div>
-          <div>binance.com</div>
-          <div>tradingview.com</div>
-          <div>coingecko.com</div>
-          <div>weisrratings.com</div>
-        </div>
+
+        <article className=" w-full    bg-center bg-cover bg-no-repeat  flex flex-col sm:flex-row justify-center  items-center  gap-3    ">
+          <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div>
+          <div className="w-full h-full   flex flex-col    justify-center  items-center gap-3    text-left  p-[1rem]  bg-gradient-to-b  from-transparent  from-80% to-white  ">
+            <p className="my-[1rem]">
+              As a financial company driven by technology, we aim to offer: An
+              all-in-one self-directed investment platform that provides
+              excellent user experience. Advanced and intelligent tools and
+              services Key Features:
+            </p>
+            <ul className="list-disc  font-extralight">
+              <li>Multi-platform Accessibility</li>
+              <li> Full Extended Hours Trading</li>
+              <li>10% Commission</li>
+              <li>Free Real-Time Quotes</li>
+              <li>24/7 Online Help</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      {/* INTEGRATED SYSTEMS */}
+
+      <section className="w-[99%]  p-[1rem]    text-black   my-[2rem]  mx-auto  ">
+        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
+          Legal Company
+        </h2> */}
+
+        <article className=" w-full  sm:w-[99%]     mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
+          {/* <div className="w-full h-full  ">
+            <img src={belief} alt="belief" className="w-full  h-full" />
+          </div> */}
+          <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
+            <h2 className="text-[1.5rem] p-[0.7rem] font-serif   bg-clip-text  text-transparent  bg-gradient-to-r  from-red-800 to-green-800"></h2>
+
+            <div className="w-full  sm:hidden    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300  ">
+              <img src={choose} alt="tradepc" className="w-full  h-full" />
+            </div>
+            <p className=" w-full  p-[0.7rem]   font-light  text-[1.1rem]  text-gray-600      tracking-wide  ">
+              Brokerage services are provided by {domain} Financial LLC, a
+              broker dealer registered with the Securities and Exchange
+              Commission (SEC). {domain} Financial LLC is a member of the
+              Financial Industry Regulatory Authority (FINRA), Securities
+              Investor Protection Corporation (SIPC), the New York Stock
+              Exchange (NYSE), NASDAQ and Cboe EDGX Exchange, Inc (CBOE EDGX).
+              {domain} Financial LLC is a member of SIPC, which protects
+              securities customers of its members up to $500,000 (including
+              $250,000 for claims for cash). An explanatory brochure is
+              available upon request or at www.sipc.org. Our clearing firm, Apex
+              Clearing Corp., has purchased an additional insurance policy. The
+              coverage limits provide protection for securities and cash up to
+              an aggregate of $150 million, subject to maximum limits of $37.5
+              million for any one customer’s securities and $900,000 for any one
+              customer’s cash. Similar to SIPC protection, this additional
+              insurance does not protect against a loss in the market value of
+              securities. {domain} Financial stays up-to-date with the latest
+              data security in order to protect our investors’ personal
+              information and asset data.
+            </p>
+          </div>
+
+          <div className="w-full   hidden  sm:block    border-none rounded-full bg-gradient-to-b  from-transparent  from-70%  to-gray-300   ">
+            <img src={choose} alt="tradepc" className="w-full    h-full" />
+          </div>
+        </article>
       </section>
     </main>
   );

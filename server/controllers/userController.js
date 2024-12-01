@@ -1,22 +1,251 @@
 const { User } = require("../models/userModel.js");
-bcrypt = require("bcrypt");
-validator = require("email-validator");
+const bcrypt = require("bcrypt");
+const validator = require("email-validator");
 // mongodb = require("mongodb");
 // Grid = require("gridfs-stream");
-dotenv = require("dotenv");
-mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 const { dbConn } = require("../config/dbConn.js");
-fs = require("fs");
+const fs = require("fs");
 const asyncHandler = require("express-async-handler");
 const WAValidator = require("multicoin-address-validator");
 // const asyncHandler = require("express-async-handler");
+const { setIntervalAsync, clearIntervalAsync } = require("set-interval-async");
+// const { agenda } = require("../index.js");
+const Agenda = require("agenda");
+const {
+  setShouldSaveResult,
+} = require("agenda/dist/job/set-shouldsaveresult.js");
+// const { processEvery } = require("agenda/dist/agenda/process-every.js");
+// const {
+//   setShouldSaveResult,
+// } = require("agenda/dist/job/set-shouldsaveresult.js");
 
 dotenv.config();
+
+// const client = (async () => await dbConn())();
+
+// console.log(client.then((dt) => dt));
+// passing an existing mongodb-native MongoClient instance
+
+// mongo: mongoose.connection.collection("harvestusers").conn.db,
+const agenda = new Agenda({
+  db: {
+    address: process.env.DB_URI,
+    collection: "harvestusers",
+  },
+});
+// processEvery: "5 seconds",
+// const agenda = new Agenda();
+
+// agenda.mongo(
+//   mongoose.connection.collection("harvestusers").conn.db,
+//   ["harvestusers"],
+//   (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//   }
+// );
+
+// const agenda = new Agenda(
+//   mongoose.connection.collection("harvestusers").conn.db,
+//   "harvestusers",
+//   function (err) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("connected now");
+//     }
+//   }
+// );
+// const agenda = new Agenda({mongo: dbConn().})
+
+// agenda.mongo(
+//   mongoose.connection.collection("harvestusers").conn.db,
+//   ["harvestusers"],
+//   function (err) {
+//     console.log(err);
+//   }
+// );
 
 // UTILITY FUNCTION
 const editor = (prev, rec) => {
   return prev === "" && rec === "None" ? prev : rec;
 };
+
+// const profitGenerator = (roi, inv, cls) => {
+//   const daily = 1000 * 10;
+//   let generatedProfit = 0;
+
+//   const intervalId = setInterval(() => {
+//     generatedProfit = (Number(inv) * Number(roi)) / 100;
+//     console.log({ genprofit: generatedProfit });
+//     if (cls == true) {
+//       clearInterval(intervalId);
+//       console.log("cleard");
+//     }
+//   }, daily);
+// };
+
+// END OF UTILITY FUNCTIONS
+
+// MODIFY SINGLEUSERS DATA
+const editUserData = asyncHandler(async (req, res) => {
+  const { balance, genProfit, profit, plan, loss, invested, id } = req.body;
+
+  console.log({ inv: invested, plan, genProfit });
+
+  if (
+    isNaN(balance) === true ||
+    isNaN(invested) === true ||
+    isNaN(profit) ||
+    isNaN(loss)
+  ) {
+    return res.status(400).json({ message: "Please enter a digit." });
+  }
+
+  const foundUser = await User.findById(id);
+
+  if (!foundUser) {
+    return res.status(400).json({ message: "Invalid user" });
+  }
+
+  const profitGenerator = (recvPlan) => {
+    let investedAmount = Number(invested);
+    let standardPlanValue = (investedAmount * 6) / 100;
+    let megaPlanValue = (investedAmount * 8) / 100;
+    let deluxePlanValue = (investedAmount * 10) / 100;
+    let vipPlanValue = (investedAmount * 15) / 100;
+
+    let userPlan = recvPlan;
+    let generatedProfit = 0;
+
+    if (userPlan === "standard") {
+      generatedProfit = standardPlanValue;
+      // return { invPlan: recvPlan, value: standardPlanValue };
+    }
+
+    if (userPlan.toLowerCase() === "mega") {
+      generatedProfit = megaPlanValue;
+      // return { invPlan: recvPlan, value: megaPlanValue };
+    }
+
+    if (userPlan.toLowerCase() === "deluxe") {
+      generatedProfit = deluxePlanValue;
+      // return { invPlan: recvPlan, value: deluxePlanValue };
+    }
+
+    if (userPlan.toLowerCase() === "vip") {
+      generatedProfit = vipPlanValue;
+      // return { invPlan: recvPlan, value: vipPlanValue };
+    }
+    return generatedProfit;
+  };
+
+  const generatedProfit = profitGenerator(plan);
+
+  console.log(generatedProfit);
+  console.log({ expected: Number(profit) + Number(generatedProfit) });
+
+  const saveToDb = async () => {
+    console.log("saving...");
+    const savedProfit = await User.findOneAndUpdate(
+      { _id: foundUser?._id },
+      {
+        profit: Number(foundUser?.profit) + Number(newProfit),
+      }
+    );
+    console.log(savedProfit);
+
+    if (savedProfit) {
+      console.log("done saving");
+      return true;
+    }
+  };
+
+  let finalProfit = 0;
+  let newProfit = 0;
+  let newBalance = 0;
+  agenda.define("generate profit", async (job) => {
+    // console.log("saving...");
+    newProfit = newProfit + Number(generatedProfit);
+    finalProfit = Number(foundUser?.profit) + Number(newProfit);
+    newBalance = Number(foundUser?.invested) + Number(finalProfit);
+    const savedProfit = await User.findOneAndUpdate(
+      { _id: foundUser?._id },
+      {
+        profit: finalProfit,
+        balance: newBalance,
+      }
+    );
+    job.repeatEvery("22 hours", {
+      skipImmediate: true,
+    });
+    await job.save();
+    console.log(newProfit);
+    console.log(finalProfit);
+    console.log("saved successfully");
+  });
+  // { setShouldSaveResult: true }'
+
+  // if (agenda.ready)
+
+  if (genProfit === true) {
+    (async function () {
+      console.log("starting");
+      await agenda.start();
+      // await agenda.every("10 seconds", "generate profit");
+    })();
+  }
+
+  if (genProfit === false) {
+    (async function () {
+      await agenda.stop();
+    })();
+  }
+
+  // let prt = profitGenerator(plan);
+  // console.log(profitData);
+
+  // INTERVAL CALL
+
+  // function sleep(ms, isCleard) {
+  //   return new Promise((resolve) => setTimeout(resolve, ms));
+  // }
+
+  // const mainFunc = () => {
+
+  //   let timeoutId
+
+  //   if (genProfit == true) {
+  //      timeoutId = setTimeout(saveToDb, 3000)
+
+  //   }
+
+  // };
+
+  // mainFunc();
+
+  // profit: profit ?? "00.00",
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: foundUser?._id },
+    {
+      invested: invested ?? "00.00",
+
+      loss: loss ?? "00.00",
+      plan: plan ?? "None",
+    }
+  );
+
+  if (!updatedUser) {
+    return res.status(400).json({ message: "Invalid user data recieved." });
+  }
+
+  // console.log(foundUser);
+
+  return res.status(200).json({ message: "success" });
+});
 
 const register = async (req, res) => {
   const { email, fullName, password, secretQuestion, secretAnswer } = req.body;
@@ -234,44 +463,6 @@ const declineTxn = asyncHandler(async (req, res) => {
   return res.status(400).json({ message: "No active request." });
 });
 
-// MODIFY SINGLEUSERS DATA
-const editUserData = asyncHandler(async (req, res) => {
-  const { balance, profit, plan, loss, invested, id } = req.body;
-
-  if (
-    isNaN(balance) === true ||
-    isNaN(invested) === true ||
-    isNaN(profit) ||
-    isNaN(loss)
-  ) {
-    return res.status(400).json({ message: "Please enter a digit." });
-  }
-
-  const foundUser = await User.findById(id);
-  if (!foundUser) {
-    return res.status(400).json({ message: "Invalid user" });
-  }
-  const updatedUser = await User.findOneAndUpdate(
-    { _id: foundUser?._id },
-    {
-      balance: balance ?? "00.00",
-      invested: invested ?? "00.00",
-
-      profit: profit ?? "00.00",
-      loss: loss ?? "00.00",
-      plan: plan ?? "None",
-    }
-  );
-
-  if (!updatedUser) {
-    return res.status(400).json({ message: "Invalid user data recieved." });
-  }
-
-  // console.log(foundUser);
-
-  return res.status(200).json({ message: "success" });
-});
-
 // WITHDRAW FUNDS
 
 const withdrawFunds = asyncHandler(async (req, res) => {
@@ -291,8 +482,9 @@ const withdrawFunds = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid wallet address" });
   }
 
-  if (foundUser?.balance < withdrawalAmount) {
-    return res.status(400).json({ message: "Insufficient fund." });
+  console.log({ bal: Number(foundUser?.balance), withdrawalAmount });
+  if (Number(foundUser?.balance) < Number(withdrawalAmount)) {
+    return res.status(400).json({ message: "Insufficient funds." });
   }
 
   const newBalance = Number(foundUser?.balance) - Number(withdrawalAmount);
@@ -369,7 +561,7 @@ const deposit = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json({
-    message: ` Our system will confirm your deposit of ${depositedAmount} to our ${walletType} wallet very shortly and depoited value will reflect on your dashbaord if confirmed.`,
+    message: ` Our system will confirm your deposit of ${depositedAmount} to our ${walletType} wallet very shortly and the deposited value will reflect on your dashbaord if confirmed.`,
   });
 });
 

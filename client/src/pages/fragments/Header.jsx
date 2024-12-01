@@ -9,7 +9,6 @@ import { headerData, domain } from "../../data";
 import { FaLessThanEqual } from "react-icons/fa6";
 import bullbear from "../../assets/bullbear.jpg";
 
-
 // import { domain } from "../../data";
 
 // const itemVariants: Variants = {
@@ -37,24 +36,23 @@ export default function Header() {
   };
 
   const content = (
-    <header className=" bg-[#1c2121]  text-white  border-b-2  border-b-gray-500 z-50   abolute top-0 sticky">
-      <section className="w-full  h-[4rem]  flex justify-around  items-center">
+    <header className=" bg-[white]  text-black  border-b-2  border-b-gray-500 z-50   abolute top-0 sticky">
+      <section className="w-[90%]  mx-auto  h-[4rem]  flex justify-between  items-center">
         <button
           onClick={() => {
             changePage("");
           }}
           className="flex justify-center  items-center   border-y-2 rounded-md  shadow-inside shadow-gray-500  p-1"
         >
-          {/* <span className="text-green-500">
-            Bull <sup>&#10138;</sup>
-          </span>
-          <span className="text-red-500">
-            Bear <sup>&#10136;</sup>
-          </span>
-          <span className="text-blue-500">Experts</span> */}
-          <img src={bullbear} alt="bullbearLogo" style={{ width: '30px', height: '30px' }} />
-          {/* <GiSoundOn className="text-[1.8rem]" /> */}
-          <img src="" alt="" />
+          <img
+            src={bullbear}
+            alt="bullbearLogo"
+            style={{ width: "30px", height: "30px" }}
+          />
+
+          <h2 className="font-serif capitalize  text-[1.2rem]  tracking-wide">
+            {domain}
+          </h2>
         </button>
         <Link to="/login" className="header-link">
           Sign in
@@ -73,12 +71,16 @@ export default function Header() {
           </Link>
         ))}
         <button onClick={() => setShowNav(!showNav)} className="md:hidden">
-          {showNav ? <LiaTimesSolid /> : <RxHamburgerMenu />}
+          {showNav ? (
+            <LiaTimesSolid className="text-[1.3rem]" />
+          ) : (
+            <RxHamburgerMenu className="text-[1.3rem]" />
+          )}
         </button>
       </section>
       <AnimatePresence>
         <motion.section
-          initial={{ x: -90 }}
+          initial={{ y: -90 }}
           whileInView={{ x: 0, y: 0 }}
           transition={{
             delay: 0,
@@ -86,12 +88,12 @@ export default function Header() {
             delayChildren: 0.5,
             staggerChildren: 0.5,
           }}
-          className={`w-[70%]  h-screen  bg-white  z-50  flex justify-center   items-start sm:hidden  ${
+          className={`w-full  min-h-[5rem]  bg-white  z-50  flex justify-center   items-start sm:hidden  ${
             !showNav ? "hidden" : "block  z-50"
           }`}
         >
           <motion.ul
-            initial={{ x: -70 }}
+            initial={{ y: -70 }}
             whileInView={{ x: 0, y: 0 }}
             transition={{
               delay: 0,
@@ -102,8 +104,8 @@ export default function Header() {
             className=" w-full   text-black  text-[1.2rem] font-bold  mt-[1rem]  flex  flex-col justify-around  gap-4  items-center"
           >
             <motion.li
-              initial={{ x: -90 }}
-              whileInView={{ x: 0, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: 0, duration: 0.8 }}
               className="header-mobile-li-style  "
               onClick={() => changePage("about#about-head")}
@@ -112,8 +114,8 @@ export default function Header() {
               About Us {/* </Link> */}
             </motion.li>
             <motion.li
-              initial={{ x: -80 }}
-              whileInView={{ x: 0, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: 0, duration: 0.8 }}
               className="header-mobile-li-style  "
               onClick={() => changePage("about#service")}
@@ -125,8 +127,8 @@ export default function Header() {
               Services {/* </Link> */}
             </motion.li>
             <motion.li
-              initial={{ x: -60 }}
-              whileInView={{ x: 0, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: 0, duration: 0.8 }}
               className="header-mobile-li-style  "
               onClick={() => changePage("milestone")}
@@ -135,8 +137,8 @@ export default function Header() {
               Milestone {/* </Link> */}
             </motion.li>
             <motion.li
-              initial={{ x: -40 }}
-              whileInView={{ x: 0, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: 0, duration: 0.8 }}
               className="header-mobile-li-style  "
               onClick={() => changePage("update")}
@@ -145,14 +147,36 @@ export default function Header() {
               Updates {/* </Link> */}
             </motion.li>
             <motion.li
-              initial={{ x: -20 }}
-              whileInView={{ x: 0, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: 0, duration: 0.8 }}
               className="header-mobile-li-style  "
               onClick={() => changePage("contact")}
             >
               {/* <Link to="/about" className=" header-mobile-link-style "> */}
               Contact Us {/* </Link> */}
+            </motion.li>
+
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="capitalize   font-serif   underline  text-balance underline-offset-2    "
+              onClick={() => changePage("login")}
+            >
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}
+              Sign In{/* </Link> */}
+            </motion.li>
+
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0, duration: 0.8 }}
+              className="capitalize   font-serif   underline  text-balance underline-offset-2    "
+              onClick={() => changePage("register")}
+            >
+              {/* <Link to="/about" className=" header-mobile-link-style "> */}
+              Sign Up {/* </Link> */}
             </motion.li>
           </motion.ul>
         </motion.section>

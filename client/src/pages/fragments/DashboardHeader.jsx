@@ -27,17 +27,22 @@ export default function DashboardHeader() {
   console.log(fullName);
   const content = (
     <header
-      className={`h-[5rem]  w-full flex  justify-center  items-center    ${
-        mode ? "bg-black text-white" : "bg-white text-black"
-      }  sticky top-0  z-50 `}
+      className={`h-[4rem]  w-full flex  justify-center  items-center    ${
+        mode ? "bg-black text-white" : "bg-[#cdcbcb] text-black"
+      }  sticky top-0  z-50 border-b-2 border-b-black  rounded-b-[1rem]`}
     >
       <section className="w-[90%] mx-auto flex justify-around  items-center">
-        <h1 className="h-[4rem]  w-[4rem]  border-2 border-black  rounded-full text-center text-[2rem]  uppercase font-black  flex  justify-center items-center  ">
+        <h1 className="h-[3rem]  w-[4rem]  border-2 border-red-500   bg-black  text-red-500  rounded-full text-center text-[2rem]  uppercase font-black  flex  justify-center items-center  ">
           {fullName.charAt()}
         </h1>
         <h2 className="flex gap-2  justify-center  items-center   ">
-          <span className="block  font-bold tracking-wide">Hello </span>
-          <MdWavingHand className="text-yellow-500   text-[1.2rem]" />
+          <span
+            className="block  font-serif  tracking-wide  "
+            style={{ textShadow: "2px 2px gray" }}
+          >
+            Welcome{" "}
+          </span>
+          <MdWavingHand className="text-yellow-600   text-[1.2rem]" />
           {/* <span className="font-bold tracking-wide truncate"> </span> */}
         </h2>
         <IoMdNotifications className="text-[1.6rem] " />

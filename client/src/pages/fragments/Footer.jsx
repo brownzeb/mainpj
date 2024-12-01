@@ -7,63 +7,58 @@ import { domain } from "../../data";
 
 export default function Footer() {
   const content = (
-    <footer className=" w-full  min-h-[12rem]  rounded-t-[2rem]  bg-[#0a0c0c]  text-white pt-2">
-      <section className="h-full w-[85%]  mx-auto  flex flex-col justify-around  gap-3  items-center ">
-        {/* <div className="w-[80%] mx-auto lg:mr-auto  flex justify-around  items-center">
-          <Link
-            className="text-[1.2rem]  font-bold  text-white text-center  underline underline-offset-4 tracking-wider  p-2"
-            to="/register"
-          >
-            Signin &#10138;
-          </Link>
-
-          <Link
-            className="text-[1.2rem]  font-bold  text-white text-center  underline underline-offset-4  tracking-wider rounded-md  p-2"
-            to="/register"
-          >
-            Signup &#10138;
-          </Link>
-        </div> */}
-        {/* <hr className=" w-[50%] mx-auto my-2   bg-gray-400   " /> */}
-        <div className="w-full mx-auto  text-center   grid     grid-cols-2  lg:grid-cols-3  gap-4  ">
-          {footerData.map((data) => (
-            <div
-              key={data.id}
-              className=" w-full min-h-fit  flex flex-col justify-center gap-3  items-center"
-            >
-              <h2 className="text-yellow-500 tracking-wide font-bold">
-                {data.head}
-              </h2>
-              <ul>
-                {data.children.map((dt) => (
-                  <li
-                    className="text-white tracking-wide  borser-b-2 border-b-gray-400"
-                    key={dt.id}
-                  >
-                    <Link to={dt.url} className="">
-                      {dt.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className=" w-full  min-h-[12rem]    bg-black  text-center  text-white pt-2">
+      <section className="h-full w-[98%]  mx-auto  flex flex-col justify-around  gap-3  items-center ">
+        <div className=" text-[0.8rem]  sm:text-[1rem] underline  underline-offset-2   font-bold flex justify-center  items-center gap-3 sm:gap-5 tracking-wide">
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Us</Link> <Link to="/login">Sign in</Link>
+          <Link to="/register">Sign up</Link>
         </div>
-        <div className=" w-[80%] mx-auto flex justify-around    border-y-2 border-y-gray-500 py-3 items-center">
-          <Link to="#">
-            {" "}
-            <FaFacebook className="icon-style" />
-          </Link>
-          <Link to="#">
-            {" "}
-            <FaInstagramSquare className="icon-style" />
-          </Link>
-          <Link to="#">
-            {" "}
-            <FaXTwitter className="icon-style" />
-          </Link>
-        </div>
-        <p className="w-[80%] mx-auto  text-center">&copy; 2024 {domain}</p>
+        <p className="text-[0.9rem] text-left  px-[0.4rem]  text-gray-400  tracking-wide  font-thin">
+          Securities trading is offered to self-directed customers by {domain}{" "}
+          Financial LLC, a broker dealer registered with the Securities and
+          Exchange Commission (SEC).{domain} Financial LLC is a member of the
+          Financial Industry Regulatory Authority (FINRA), Securities Investor
+          Protection Corporation (SIPC), The New York Stock Exchange (NYSE),
+          NASDAQ and Cboe EDGX Exchange, Inc (CBOE EDGX).
+          {domain} Financial LLC is a member of SIPC, which protects securities
+          customers of its members up to $500,000 (including $250,000 for claims
+          for cash). An explanatory brochure is available upon request or at
+          www.sipc.org. Our clearing firm, Apex Clearing Corp., has purchased an
+          additional insurance policy.. Our clearing firm Apex Clearing Corp has
+          purchased an additional insurance policy. The coverage limits provide
+          protection for securities and cash up to an aggregate of $150 million,
+          subject to maximum limits of $37.5 million for any one customer’s
+          securities and $900,000 for any one customer’s cash. Similar to SIPC
+          protection, this additional insurance does not protect against a loss
+          in the market value of securities. Cryptocurrency execution and
+          custody services are provided by Apex Crypto LLC (NMLS ID 1828849)
+          through a software licensing agreement between Apex Crypto LLC and{" "}
+          {domain} Pay LLC. Cryptocurrency trading is offered through an account
+          with Apex Crypto. Apex Crypto is not a registered broker-dealer or
+          FINRA member and your cryptocurrency holdings are not FDIC or SIPC
+          insured. Please ensure that you fully understand the risks involved
+          before trading. Not all coins provided by Apex Crypto LLC are
+          available to New York residents. No content on the {domain} Financial
+          LLC website shall be considered as a recommendation or solicitation
+          for the purchase or sale of securities, options, or other investment
+          products. All information and data on the website is for reference
+          only and no historical data shall be considered as the basis for
+          judging future trends. Investors should be aware that system response,
+          execution price, speed, liquidity, market data, and account access
+          times are affected by many factors, including market volatility, size
+          and type of order, market conditions, system performance, and other
+          factors. Free trading of stocks, ETFs, and options refers to $0
+          commissions for
+          {domain} Financial LLC self-directed individual cash or margin
+          brokerage accounts and IRAs that trade U.S. listed securities via
+          mobile devices, desktop or website products. Relevant regulatory and
+          exchange fees may apply. Please refer to our Fee Schedule for more
+          details
+        </p>
+        <p className="w-[80%] mx-auto my-[1rem] text-[0.8rem] text-center">
+          &copy; 2024 {domain}
+        </p>
       </section>
     </footer>
   );

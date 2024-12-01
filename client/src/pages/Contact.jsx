@@ -1,4 +1,4 @@
-import contact from "../assets/contact.jpg";
+import contact from "../assets/contactusimg.jpg";
 import { contactusData } from "../data";
 import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -74,15 +74,11 @@ export default function Contact() {
   const content = (
     <main>
       <section className="w-full h-[10rem] md:h-[15rem] bg-black text-white flex  relative">
-        <div className=" h-[0.05rem]  w-[70%]  bottom-14  left-2  absolute  bg-white"></div>
-        <div className=" h-[3rem]  w-[0.05rem]  bottom-10  left-4  absolute  bg-white"></div>
+        {/* <div className=" h-[0.05rem]  w-[70%]  bottom-14  left-2  absolute  bg-white"></div>
+        <div className=" h-[3rem]  w-[0.05rem]  bottom-10  left-4  absolute  bg-white"></div> */}
 
-        <div className=" w-[50%]  flex justify-center  bg-black text-white items-center ">
-          <h1 className="font-black text-[1.2rem]  tracking-wider">
-            Get In Touch
-          </h1>
-        </div>
-        <div className=" w-[50%]    flex justify-center  bg-black text-white items-center">
+        <div className=" w-[30%]  flex justify-center  bg-gray-400 text-white items-center "></div>
+        <div className=" w-[70%]    flex justify-center  bg-gray-400 text-white items-center">
           <img
             src={contact}
             alt="contact"
@@ -94,15 +90,15 @@ export default function Contact() {
         {contactusData.map((data) => (
           <div
             key={data.id}
-            className="bg-white  shadow-xl shadow-gray-500 w-[60%] p-3 mx-auto  flex flex-col gap-2"
+            className="bg-white  shadow-xl shadow-gray-500 w-[70%] p-3 mx-auto  text-center   flex flex-col  justify-center  items-center gap-2"
           >
             {data.icon}
-            <h2>{data.name}</h2>
+            <h2 className="text-red-500  font-serif">{data.name}</h2>
             <h5>{data.value}</h5>
           </div>
         ))}
       </section>
-      <section className="w-full">
+      <section className="w-full  my-[2rem]">
         <div className=" w-[98%] md:w-[60%]  mx-auto flex justify-around  items-center">
           {" "}
           <span className="text-md capitalize mx-auto    font-bold ">
@@ -133,11 +129,11 @@ export default function Contact() {
         >
           <div className="form-div-style">
             <label htmlFor="email" className="form-label-style ">
-              Email:{" "}
+              {/* Email:{" "} */}
             </label>
             <input
               type="text"
-              placeholder="mike@gmail.com"
+              placeholder="Email*"
               id="email"
               {...register("email", {
                 required: { value: true, message: "Please fill this field" },
@@ -149,7 +145,7 @@ export default function Contact() {
               })}
               name="email"
               className={`form-input-style  ${
-                errors?.email ? "border-red-400" : "border-green-500"
+                errors?.email ? "border-red-400" : "border-gray-500"
               } `}
             />
             {errors?.email && errors?.email?.type === "required" && (
@@ -180,7 +176,7 @@ export default function Contact() {
                 required: { value: true, message: "Please fill this field" },
               })}
               className={`form-input-style  ${
-                errors.message ? "border-red-400" : "border-green-500"
+                errors.message ? "border-red-400" : "border-gray-500"
               } `}
             />
             {errors?.message && errors?.message?.type === "required" && (
@@ -199,7 +195,7 @@ export default function Contact() {
 
           <input
             type="submit"
-            className="bg-[#0a572a]  text-xl tracking-wide rounded-lg  mx-auto block  p-2"
+            className="bg-red-500  text-white  font-serif  text-xl tracking-wide text-[0.8rem]  mx-auto block py-[0.2rem]  px-[2rem]"
           />
         </form>
       </section>
