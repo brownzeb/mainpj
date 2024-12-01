@@ -284,6 +284,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* why choose us */}
       <motion.section
         animate={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -218,9 +218,6 @@ export default function DashboardLandingUi() {
           </Link>
         </div>
       </section>
-      {/* <section className="w-[80%]  mx-auto  p-3     flex justify-center  items-center">
-        <SimpleGauge value={50} maxLimit={1000} style={{ color: "white" }} />
-      </section> */}
 
       <hr className="bg-black w-[50%] sm:w-[20%] my-[0.7rem] mx-auto " />
 
