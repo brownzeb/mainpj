@@ -189,8 +189,6 @@ const editUserData = asyncHandler(async (req, res) => {
   });
   // { setShouldSaveResult: true }'
 
-  // if (agenda.ready)
-
   if (genProfit === true) {
     (async function () {
       console.log("starting");
@@ -205,29 +203,8 @@ const editUserData = asyncHandler(async (req, res) => {
     })();
   }
 
-  // let prt = profitGenerator(plan);
-  // console.log(profitData);
-
-  // INTERVAL CALL
-
-  // function sleep(ms, isCleard) {
-  //   return new Promise((resolve) => setTimeout(resolve, ms));
-  // }
-
-  // const mainFunc = () => {
-
-  //   let timeoutId
-
-  //   if (genProfit == true) {
-  //      timeoutId = setTimeout(saveToDb, 3000)
-
-  //   }
-
-  // };
-
   // mainFunc();
 
-  // profit: profit ?? "00.00",
   const updatedUser = await User.findOneAndUpdate(
     { _id: foundUser?._id },
     {
