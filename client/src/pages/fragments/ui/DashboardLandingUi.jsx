@@ -16,7 +16,7 @@ import btcrise from "../../../assets/btcrise.jpg";
 import { motion } from "framer-motion";
 import { domain } from "../../../data.js";
 import { TechnicalAnalysis } from "react-tradingview-embed";
-import TradingViewWidget, { Themes } from "react-tradingview-widget";
+// import TradingViewWidget, { Themes } from "react-tradingview-widget";
 // import TradingView, { Themes } from 'react-tradingview-wrapper';
 
 export default function DashboardLandingUi() {
@@ -241,15 +241,15 @@ export default function DashboardLandingUi() {
 
       {/* tradingview widget  */}
 
-      <div className="w-[95%] h-[20rem]  mx-auto">
+      {/* <div className="w-[95%] h-[20rem]  mx-auto">
         <TradingViewWidget
           symbol="BITSTAMP:BTCUSD"
           theme={Themes.LIGHT}
           locale="en"
           autosize
-        />
+        /> */}
 
-        {/* {
+      {/* {
       "interval": "15m",
       "width": 425,
       "isTransparent": false,
@@ -260,7 +260,7 @@ export default function DashboardLandingUi() {
       "locale": "en",
       "colorTheme": "light"
     } */}
-      </div>
+      {/* </div> */}
       {/* TAKE ADVANTAGE OF THE BULLISH BTC */}
 
       <motion.section
