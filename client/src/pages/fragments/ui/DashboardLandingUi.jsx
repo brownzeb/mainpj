@@ -15,7 +15,7 @@ import tradephone from "../../../assets/tradephone.jpg";
 import btcrise from "../../../assets/btcrise.jpg";
 import { motion } from "framer-motion";
 import { domain } from "../../../data.js";
-import { TechnicalAnalysis } from "react-tradingview-embed";
+// import { TechnicalAnalysis } from "react-tradingview-embed";
 // import TradingViewWidget, { Themes } from "react-tradingview-widget";
 // import TradingView, { Themes } from 'react-tradingview-wrapper';
 
