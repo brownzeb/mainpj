@@ -128,7 +128,7 @@ export default function ActivitiesUi() {
                   <div className="w-[99%]  text-[0.9rem]  text-gray-500 flex justify-around  items-center  mx-auto">
                     {" "}
                     {data?.txnType === "deposit" ? (
-                      <FaPlusCircle className="text-[1.8rem] text-green-500" />
+                      <FaPlusCircle className="text-[0.9rem] text-green-500" />
                     ) : (
                       <FaMinusCircle className="text-[o.9rem] text-red-500" />
                     )}

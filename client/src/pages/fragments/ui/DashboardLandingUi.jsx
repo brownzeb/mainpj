@@ -15,7 +15,9 @@ import tradephone from "../../../assets/tradephone.jpg";
 import btcrise from "../../../assets/btcrise.jpg";
 import { motion } from "framer-motion";
 import { domain } from "../../../data.js";
+import { TechnicalAnalysis } from "react-tradingview-embed";
 import TradingViewWidget, { Themes } from "react-tradingview-widget";
+// import TradingView, { Themes } from 'react-tradingview-wrapper';
 
 export default function DashboardLandingUi() {
   const { auth, setAuth } = useOutletContext();
@@ -220,6 +222,22 @@ export default function DashboardLandingUi() {
       </section>
 
       <hr className="bg-black w-[50%] sm:w-[20%] my-[0.7rem] mx-auto " />
+      {/* technical analysis */}
+      {/* 
+      <div className="w-[90%]  h-[40rem] bg-gray-600 mx-auto">
+        <TechnicalAnalysis
+          widgetProps={{
+            interval: "1m",
+            width: "100%",
+            isTransparent: true,
+            height: "100%",
+            symbol: "BINANCE:BTCUSDT",
+            showIntervalTabs: true,
+            displayMode: "single",
+            locale: "en",
+          }}
+        />
+      </div> */}
 
       {/* tradingview widget  */}
 
@@ -230,6 +248,18 @@ export default function DashboardLandingUi() {
           locale="en"
           autosize
         />
+
+        {/* {
+      "interval": "15m",
+      "width": 425,
+      "isTransparent": false,
+      "height": 450,
+      "symbol": "NASDAQ:AAPL",
+      "showIntervalTabs": true,
+      "displayMode": "single",
+      "locale": "en",
+      "colorTheme": "light"
+    } */}
       </div>
       {/* TAKE ADVANTAGE OF THE BULLISH BTC */}
 

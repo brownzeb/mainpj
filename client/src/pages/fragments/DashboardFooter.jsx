@@ -8,7 +8,7 @@ import { FaUpload } from "react-icons/fa";
 export default function DashboardFooter() {
   const content = (
     <footer className="w-full  bg-black   rounded-t-[1rem] overflow-hidden   text-white   border-t-2 border-t-black      sticky bottom-0 ">
-      <ul className="w-[99%] min-h-[3.5rem] mx-auto  flex justify-around   items-center ">
+      <ul className="w-[75%]  min-h-[3.5rem] mx-auto  flex justify-around   items-center ">
         {dashboardFooterData.map((data) => (
           <li key={data.id}>
             <Link to={data.url} className="link-style     text-red-500     ">
