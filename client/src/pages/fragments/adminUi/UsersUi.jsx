@@ -134,7 +134,7 @@ export default function UsersUi() {
               <h4>No Users to show</h4>
               <button
                 onClick={() => setReload(!reload)}
-                className="text-white rounded-md bg-[gree] font-bold flex flex-col justify-around items-center"
+                className="text-white  bg-[#03045e]    font-serif flex flex-col justify-around items-center"
               >
                 Reload
                 <MdReplayCircleFilled className="text-[2rem]  text-white " />
