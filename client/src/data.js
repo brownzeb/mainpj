@@ -369,23 +369,56 @@ export const walletTypes = [
   { name: "usdt", id: 3 },
 ];
 
+// BTC
+
+// bc1qzlqcsskdznqf6yd4w87l7askfteu4wkcmgex63
+
+// USDT(Trc)
+
+// TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH
+
+// USDT (eth)
+
+// 0xB91D00440E338CF4242cd99603aAB693fFdD0a56
+
+// ETH (erc)
+
+// 0xB91D00440E338CF4242cd99603aAB693fFdD0a56
+
+// Trx
+
+// TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH
+
 export const adminWalletData = [
   {
     walletType: "btc",
     network: "btc",
-    walletAddr: "bc1ql3f66cf5hmq0k5zgsdag7qs4s2ugrgpc5q0ue3",
+    walletAddr: "bc1qzlqcsskdznqf6yd4w87l7askfteu4wkcmgex63",
     id: 1,
   },
   {
     walletType: "eth",
     network: "erc20",
-    walletAddr: "0x7e0081731C50cC89E980136302614B9e99eE0dE1",
+    walletAddr: "0xB91D00440E338CF4242cd99603aAB693fFdD0a56",
     id: 2,
   },
   {
     walletType: "usdt",
-    network: "usdt",
-    walletAddr: "TUn2xEfTZhsp8of9JwkGipnb9eFnEWNegG",
+    network: "Trc",
+    walletAddr: "TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH",
+    id: 3,
+  },
+  {
+    walletType: "usdt",
+    network: "eth",
+    walletAddr: "0xB91D00440E338CF4242cd99603aAB693fFdD0a56",
+    id: 3,
+  },
+
+  {
+    walletType: "Trx",
+    network: "",
+    walletAddr: "TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH",
     id: 3,
   },
 ];
@@ -451,4 +484,10 @@ export const footerData = [
     ],
     id: 6,
   },
+];
+
+export const mediaHandles = [
+  { name: "messenger", icon: "", id: 1 },
+  { name: "instagram", icon: "", id: 2 },
+  { name: "whatsapp", icon: "", id: 3 },
 ];
