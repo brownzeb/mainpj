@@ -33,7 +33,7 @@ import { BsFillWalletFill } from "react-icons/bs";
 import { FaBtc } from "react-icons/fa";
 
 // SITE NAME
-export const domain = "bullcloud";
+export const domain = "bullcloudtraders";
 
 // CONTACT US
 

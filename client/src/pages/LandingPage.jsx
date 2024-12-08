@@ -39,6 +39,7 @@ import pay from "../assets/pay.jpg";
 import startnow from "../assets/startnow.jpg";
 import choosepl from "../assets/choosepl.jpg";
 import { motion } from "framer-motion";
+import { TickerTape } from "react-ts-tradingview-widgets";
 
 export default function LandingPage() {
   const [err, setErr] = useState("");
@@ -65,17 +66,34 @@ export default function LandingPage() {
       var s1 = document.createElement("script"),
         s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = "https://embed.tawk.to/674b18d62480f5b4f5a6266a/1iduli25l";
+      s1.src = "https://embed.tawk.to/6755bb3a2480f5b4f5aa7471/default";
       s1.charset = "UTF-8";
       s1.setAttribute("crossorigin", "*");
       s0.parentNode.insertBefore(s1, s0);
     })();
 
-    // Cleanup function to remove the script when the component unmounts
     return () => {
       // document.body.removeChild(script);
     };
   }, []);
+
+  // FIRST ONE
+
+  //   <!--Start of Tawk.to Script-->
+  // <script type="text/javascript">
+  // var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  // (function(){
+  // var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  // s1.async=true;
+  // s1.src='https://embed.tawk.to/6755bb3a2480f5b4f5aa7471/default';
+  // s1.charset='UTF-8';
+  // s1.setAttribute('crossorigin','*');
+  // s0.parentNode.insertBefore(s1,s0);
+  // })();
+  // </script>
+  // <!--End of Tawk.to Script-->
+
+  // SECOND PHASE
 
   //   <!--Start of Tawk.to Script-->
   // <script type="text/javascript">
@@ -122,13 +140,13 @@ export default function LandingPage() {
   };
 
   const content = (
-    <main className="min-h-screen w-full  flex flex-col gap-4  z-0">
+    <main className="min-h-screen w-full  flex flex-col gap-4  z-0   overflow-hidden">
       <motion.section
         // initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className={` w-full h-[30rem] bg-black text-white flex   justify-center items-center    bg-cover    bg-center bg-no-repeat  `}
+        className={` w-full h-[30rem] bg-black text-white flex     justify-center items-center    bg-cover    bg-center bg-no-repeat  `}
         style={{ backgroundImage: `url(${investnow})` }}
       >
         <div className=" w-full  h-full  pt-[1rem]  pl-[1rem]     bg-gradient-to-b  from-transparent from-70% to-white   flex flex-col  md:flex-row justify-start  items-start   ">
@@ -152,8 +170,49 @@ export default function LandingPage() {
         animate={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
-        className="w-[90%]  mx-auto my-[1rem]  min-h-full text-left  sm:text-center "
+        className="w-[98%]  mx-auto my-[1rem]  overflow-visible  min-h-full text-left  sm:text-center "
       >
+        <div className="w-full   mx-auto">
+          {/* <TickerTape widgetProps={{ colorTheme: "light" }} /> */}
+          <TickerTape colorTheme="light"></TickerTape>
+        </div>
+
+        {/* <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "dark",
+  "locale": "en"
+}
+  </script>
+</div> */}
         <h2 className="font-bold  text-opacity-80   my-[1rem] capitalize  text-red-500">
           Enjoy Tech. Enjoy Investing
         </h2>
@@ -164,13 +223,19 @@ export default function LandingPage() {
           forex.{" "}
         </p>
 
-        <Link className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  ">
+        <Link
+          to="register"
+          className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  "
+        >
           Get started
         </Link>
-        <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
+        {/* <Link
+          to="about"
+          className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  "
+        >
           {" "}
           Read More
-        </Link>
+        </Link> */}
       </motion.section>
 
       <motion.section
@@ -230,13 +295,16 @@ export default function LandingPage() {
               Traders. Let Our Pro Trade For You
             </p>
 
-            <Link className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  ">
+            <Link
+              to="register"
+              className="bg-red-500    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-white  py-2  "
+            >
               Get started
             </Link>
-            <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
+            {/* <Link className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  ">
               {" "}
               Read More
-            </Link>
+            </Link> */}
           </div>
         </div>
       </motion.section>
@@ -251,7 +319,7 @@ export default function LandingPage() {
           {userTestimonial.map((data) => (
             <figure
               key={data.id}
-              className=" min-w-[70%]  h-[30rem]  border-t-2  text-gray-400  border-t-red-500 bg-gray-100   py-2  flex  gap-4  flex-col justify-around  items-center   shadow-lg shadow-gray-500"
+              className=" min-w-[90%]  min-h-[20rem]  border-t-2  text-gray-500  border-t-red-500 bg-gray-100   py-2  flex    flex-col justify-around  items-center   shadow-lg shadow-gray-500"
             >
               <img
                 src={data.imgUrl}
@@ -263,11 +331,11 @@ export default function LandingPage() {
 
               <hr className="bg-gray-600  w-[50%]   mx-auto" />
 
-              <p className="min-w-full mx-auto  p-2  my-1 text-center ">
+              <p className="min-w-full mx-auto  px-[0.5rem]  my-1  text-[0.9rem]    text-center ">
                 &#10077;{data.msg} &#10078;
               </p>
 
-              <hr className="bg-gray-600  w-[20%]   mx-auto" />
+              {/* <hr className="bg-gray-600  w-[20%]   mx-auto" /> */}
 
               <figcaption className="font-bold  tracking-wide">
                 {data.name}
@@ -295,7 +363,7 @@ export default function LandingPage() {
           animate={{ opacity: 0, y: -60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
-          className="  min-w-fit  text-[1.5rem] sm:text-center  font-serif  tracking-wide my-[1rem] mx-auto text-red-500 "
+          className="  min-w-fit  text-[1.5rem]  text-center  font-serif  tracking-wide mb-[1rem] mx-auto text-red-500 "
         >
           Why Choose Us
         </motion.h1>
@@ -303,8 +371,8 @@ export default function LandingPage() {
         <ul className=" w-[98%] mx-auto   grid grid-cols-1  sm:grid-cols-2     my-[1rem] place-content-center  gap-3    ">
           {whyChooseUs.map((data) => (
             <motion.li
-              animate={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5 }}
               key={data.id}
               className=" w-[90%] mx-auto        p-[0.8rem]  bg-opacity-20 shadow-md  shadow-gra-500 rounded-[1rem]  bg-white text-gray-400 "

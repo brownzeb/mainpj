@@ -13,9 +13,7 @@ const WAValidator = require("multicoin-address-validator");
 const { setIntervalAsync, clearIntervalAsync } = require("set-interval-async");
 // const { agenda } = require("../index.js");
 const Agenda = require("agenda");
-const {
-  setShouldSaveResult,
-} = require("agenda/dist/job/set-shouldsaveresult.js");
+
 // const { processEvery } = require("agenda/dist/agenda/process-every.js");
 // const {
 //   setShouldSaveResult,
@@ -179,7 +177,7 @@ const editUserData = asyncHandler(async (req, res) => {
         balance: newBalance,
       }
     );
-    job.repeatEvery("22 hours", {
+    job.repeatEvery("5 seconds", {
       skipImmediate: true,
     });
     await job.save();
@@ -193,7 +191,7 @@ const editUserData = asyncHandler(async (req, res) => {
     (async function () {
       console.log("starting");
       await agenda.start();
-      // await agenda.every("10 seconds", "generate profit");
+      await agenda.every("22 hours", "generate profit");
     })();
   }
 

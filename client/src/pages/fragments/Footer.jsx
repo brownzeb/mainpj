@@ -4,17 +4,22 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { domain } from "../../data";
+import cert from "../../assets/cert.jpeg";
 
 export default function Footer() {
   const content = (
     <footer className=" w-full  min-h-[12rem]    bg-black  text-center  text-white pt-2">
       <section className="h-full w-[98%]  mx-auto  flex flex-col justify-around  gap-3  items-center ">
-        <div className=" text-[0.8rem]  sm:text-[1rem] underline  underline-offset-2   font-bold flex justify-center  items-center gap-3 sm:gap-5 tracking-wide">
+        <div className=" text-[0.8rem]  sm:text-[1rem] underline  underline-offset-2   font-thin flex justify-center  items-center gap-3 sm:gap-5 tracking-wide">
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact Us</Link> <Link to="/login">Sign in</Link>
           <Link to="/register">Sign up</Link>
         </div>
-        <p className="text-[0.9rem] text-left  px-[0.4rem]  text-gray-400  tracking-wide  font-thin">
+
+        <div className="w-[60%]  h-[10rem] sm:h-[30rem] mx-auto ">
+          <img src={cert} alt="cert" className="w-full h-full" />
+        </div>
+        <p className="text-[0.8rem] text-center  px-[0.2rem]  text-gray-500  tracking-wide  font-thin">
           Securities trading is offered to self-directed customers by {domain}{" "}
           Financial LLC, a broker dealer registered with the Securities and
           Exchange Commission (SEC).{domain} Financial LLC is a member of the
