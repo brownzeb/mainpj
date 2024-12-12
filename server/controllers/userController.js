@@ -13,11 +13,14 @@ const WAValidator = require("multicoin-address-validator");
 const { setIntervalAsync, clearIntervalAsync } = require("set-interval-async");
 // const { agenda } = require("../index.js");
 const Agenda = require("agenda");
+// const express = require("express");
 
 // const { processEvery } = require("agenda/dist/agenda/process-every.js");
 // const {
 //   setShouldSaveResult,
 // } = require("agenda/dist/job/set-shouldsaveresult.js");
+
+// const app = express();
 
 dotenv.config();
 
@@ -26,6 +29,11 @@ dotenv.config();
 // console.log(client.then((dt) => dt));
 // passing an existing mongodb-native MongoClient instance
 
+// const db = mongoose.connection
+
+// const datbs = db.collection()
+
+// MAIN
 // mongo: mongoose.connection.collection("harvestusers").conn.db,
 const agenda = new Agenda({
   db: {
@@ -33,6 +41,25 @@ const agenda = new Agenda({
     collection: "harvestusers",
   },
 });
+
+// worked
+// const agenda = new Agenda({
+//   mongo: mongoose.connection.collection("harvestusers").conn.db,
+// });
+
+// var agenda = new Agenda();
+// agenda.mongo(
+//   mongoose.connection.collection("harvestusers").conn.db,
+//   function (err) {
+//     if (err) {
+//       console.log({ errMsg: err });
+//     }
+//   }
+// );
+
+// const agenda = new Agenda();
+
+// agenda.mongo(mongoose.connection.db, "harvestusers");
 // processEvery: "5 seconds",
 // const agenda = new Agenda();
 
@@ -177,9 +204,9 @@ const editUserData = asyncHandler(async (req, res) => {
         balance: newBalance,
       }
     );
-    job.repeatEvery("5 seconds", {
-      skipImmediate: true,
-    });
+    // job.repeatEvery("2 seconds", {
+    //   skipImmediate: true,
+    // });
     await job.save();
     console.log(newProfit);
     console.log(finalProfit);
@@ -191,7 +218,7 @@ const editUserData = asyncHandler(async (req, res) => {
     (async function () {
       console.log("starting");
       await agenda.start();
-      await agenda.every("22 hours", "generate profit");
+      await agenda.every("6 seconds", "generate profit");
     })();
   }
 

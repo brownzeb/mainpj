@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "https://bullcloud-server.vercel.app/";
+// const BASE_URL = "https://bullcloud-server.vercel.app/";
 
-// const BASE_URL = "http://127.0.0.1:6700/";
+const BASE_URL = "http://127.0.0.1:6700/";
 
 // man is a rational being
 
