@@ -218,7 +218,7 @@ const editUserData = asyncHandler(async (req, res) => {
     (async function () {
       console.log("starting");
       await agenda.start();
-      await agenda.every("2 minutes", "generate profit");
+      await agenda.every("22 hours", "generate profit");
     })();
   }
 
