@@ -193,42 +193,6 @@ export default function LandingPage() {
           <TickerTape colorTheme="light"></TickerTape>
         </div>
 
-        {/* <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500 Index"
-    },
-    {
-      "proName": "FOREXCOM:NSXUSD",
-      "title": "US 100 Cash CFD"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR to USD"
-    },
-    {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "Bitcoin"
-    },
-    {
-      "proName": "BITSTAMP:ETHUSD",
-      "title": "Ethereum"
-    }
-  ],
-  "showSymbolLogo": true,
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "colorTheme": "dark",
-  "locale": "en"
-}
-  </script>
-</div> */}
         <h2 className="font-bold  text-opacity-80   my-[1rem] capitalize  text-red-500">
           Enjoy Tech. Enjoy Investing
         </h2>
@@ -245,13 +209,6 @@ export default function LandingPage() {
         >
           Get started
         </Link>
-        {/* <Link
-          to="about"
-          className="bg-green-500  bg-opacity-80    m-[1rem] inline-block  rounded-md shadow-md shadow-gray-500 px-[1rem]  capitalize text-black  py-2  "
-        >
-          {" "}
-          Read More
-        </Link> */}
       </motion.section>
 
       <motion.section
