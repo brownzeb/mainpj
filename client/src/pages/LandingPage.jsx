@@ -66,7 +66,7 @@ export default function LandingPage() {
       var s1 = document.createElement("script"),
         s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = "https://embed.tawk.to/6755bb3a2480f5b4f5aa7471/default";
+      s1.src = "https://embed.tawk.to/6760a6b449e2fd8dfef90fdc/default";
       s1.charset = "UTF-8";
       s1.setAttribute("crossorigin", "*");
       s0.parentNode.insertBefore(s1, s0);
@@ -76,6 +76,22 @@ export default function LandingPage() {
       // document.body.removeChild(script);
     };
   }, []);
+
+  // just now
+
+  // <!--Start of Tawk.to Script-->
+  // <script type="text/javascript">
+  // var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  // (function(){
+  // var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  // s1.async=true;
+  // s1.src='https://embed.tawk.to/6760a6b449e2fd8dfef90fdc/default';
+  // s1.charset='UTF-8';
+  // s1.setAttribute('crossorigin','*');
+  // s0.parentNode.insertBefore(s1,s0);
+  // })();
+  // </script>
+  // <!--End of Tawk.to Script-->
 
   // FIRST ONE
 
