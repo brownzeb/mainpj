@@ -4,8 +4,8 @@ const validator = require("email-validator");
 // mongodb = require("mongodb");
 // Grid = require("gridfs-stream");
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const { dbConn } = require("../config/dbConn.js");
+// const mongoose = require("mongoose");
+const { dbConn, mongoose } = require("../config/dbConn.js");
 const fs = require("fs");
 const asyncHandler = require("express-async-handler");
 const WAValidator = require("multicoin-address-validator");
@@ -23,6 +23,10 @@ const Agenda = require("agenda");
 // const app = express();
 
 dotenv.config();
+
+// const { mongoose, dbConnect } = dbConn();
+
+// console.log(dbConnect);
 
 // const client = (async () => await dbConn())();
 
@@ -48,6 +52,14 @@ const agenda = new Agenda({
 // });
 
 // var agenda = new Agenda();
+
+// dbConnect.then(function () {
+//   agenda.mongo(mongoose.connection.db, "harvestusers");
+// });
+
+// ["harvestusers"],
+// function (err) {}
+// var agenda = new Agenda();
 // agenda.mongo(
 //   mongoose.connection.collection("harvestusers").conn.db,
 //   function (err) {
@@ -59,7 +71,10 @@ const agenda = new Agenda({
 
 // const agenda = new Agenda();
 
-// agenda.mongo(mongoose.connection.db, "harvestusers");
+// agenda.mongo(
+//   mongoose.connection.collection("harvestusers").conn.db,
+//   "harvestusers"
+// );
 // processEvery: "5 seconds",
 // const agenda = new Agenda();
 
@@ -218,7 +233,7 @@ const editUserData = asyncHandler(async (req, res) => {
     (async function () {
       console.log("starting");
       await agenda.start();
-      await agenda.every("22 hours", "generate profit");
+      await agenda.every("5 seconds", "generate profit");
     })();
   }
 
