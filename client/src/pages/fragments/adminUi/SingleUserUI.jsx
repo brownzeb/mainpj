@@ -129,8 +129,6 @@ export default function SingleUserUi() {
     //   return setErrMessage("All fields are required");
     // }
 
-    // More validations can be added based on security target
-
     try {
       const credentials = {
         id,
@@ -249,11 +247,6 @@ export default function SingleUserUi() {
         >
           {/* PLAN  */}
           <div className="form-div-style">
-            {/* <h4>
-            We are happy{" "}
-            <span className="text-yellow-400 text-[1.4rem] "> &#9787; </span>
-            to have you.{" "}
-          </h4> */}
             <label htmlFor="plan" className="form-label-style ">
               Plan:{" "}
             </label>
