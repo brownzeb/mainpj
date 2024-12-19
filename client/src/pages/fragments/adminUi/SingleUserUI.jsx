@@ -417,7 +417,7 @@ export default function SingleUserUi() {
 
           <button
             type="submit"
-            className="bg-green-600  text-black  tracking-wide  font-serif  mx-auto block   shadow-inner  shadow-gray-500  py-[0.5rem]  px-[1rem]  lg:col-span-2"
+            className="bg-green-700  rounded-md    text-black  tracking-wide  font-serif  mx-auto block   shadow-inner  shadow-gray-400  py-[0.5rem]  px-[1rem]  lg:col-span-2"
           >
             Update Now
           </button>
