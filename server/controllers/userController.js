@@ -5,14 +5,14 @@ const validator = require("email-validator");
 // Grid = require("gridfs-stream");
 const dotenv = require("dotenv");
 // const mongoose = require("mongoose");
-const { dbConn, mongoose } = require("../config/dbConn.js");
+// const { dbConn, mongoose } = require("../config/dbConn.js");
 const fs = require("fs");
 const asyncHandler = require("express-async-handler");
 const WAValidator = require("multicoin-address-validator");
 // const asyncHandler = require("express-async-handler");
-const { setIntervalAsync, clearIntervalAsync } = require("set-interval-async");
+// const { setIntervalAsync, clearIntervalAsync } = require("set-interval-async");
 // const { agenda } = require("../index.js");
-const Agenda = require("agenda");
+// const Agenda = require("agenda");
 // const express = require("express");
 
 // const { processEvery } = require("agenda/dist/agenda/process-every.js");
@@ -39,12 +39,12 @@ dotenv.config();
 
 // MAIN
 // mongo: mongoose.connection.collection("harvestusers").conn.db,
-const agenda = new Agenda({
-  db: {
-    address: process.env.DB_URI,
-    collection: "harvestusers",
-  },
-});
+// const agenda = new Agenda({
+//   db: {
+//     address: process.env.DB_URI,
+//     collection: "harvestusers",
+//   },
+// });
 
 // worked
 // const agenda = new Agenda({
@@ -151,97 +151,97 @@ const editUserData = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "Invalid user" });
   }
 
-  const profitGenerator = (recvPlan) => {
-    let investedAmount = Number(invested);
-    let standardPlanValue = (investedAmount * 6) / 100;
-    let megaPlanValue = (investedAmount * 8) / 100;
-    let deluxePlanValue = (investedAmount * 10) / 100;
-    let vipPlanValue = (investedAmount * 15) / 100;
+  // const profitGenerator = (recvPlan) => {
+  //   let investedAmount = Number(invested);
+  //   let standardPlanValue = (investedAmount * 6) / 100;
+  //   let megaPlanValue = (investedAmount * 8) / 100;
+  //   let deluxePlanValue = (investedAmount * 10) / 100;
+  //   let vipPlanValue = (investedAmount * 15) / 100;
 
-    let userPlan = recvPlan;
-    let generatedProfit = 0;
+  //   let userPlan = recvPlan;
+  //   let generatedProfit = 0;
 
-    if (userPlan === "standard") {
-      generatedProfit = standardPlanValue;
-      // return { invPlan: recvPlan, value: standardPlanValue };
-    }
+  //   if (userPlan === "standard") {
+  //     generatedProfit = standardPlanValue;
+  //     // return { invPlan: recvPlan, value: standardPlanValue };
+  //   }
 
-    if (userPlan.toLowerCase() === "mega") {
-      generatedProfit = megaPlanValue;
-      // return { invPlan: recvPlan, value: megaPlanValue };
-    }
+  //   if (userPlan.toLowerCase() === "mega") {
+  //     generatedProfit = megaPlanValue;
+  //     // return { invPlan: recvPlan, value: megaPlanValue };
+  //   }
 
-    if (userPlan.toLowerCase() === "deluxe") {
-      generatedProfit = deluxePlanValue;
-      // return { invPlan: recvPlan, value: deluxePlanValue };
-    }
+  //   if (userPlan.toLowerCase() === "deluxe") {
+  //     generatedProfit = deluxePlanValue;
+  //     // return { invPlan: recvPlan, value: deluxePlanValue };
+  //   }
 
-    if (userPlan.toLowerCase() === "vip") {
-      generatedProfit = vipPlanValue;
-      // return { invPlan: recvPlan, value: vipPlanValue };
-    }
-    return generatedProfit;
-  };
+  //   if (userPlan.toLowerCase() === "vip") {
+  //     generatedProfit = vipPlanValue;
+  //     // return { invPlan: recvPlan, value: vipPlanValue };
+  //   }
+  //   return generatedProfit;
+  // };
 
-  const generatedProfit = profitGenerator(plan);
+  // const generatedProfit = profitGenerator(plan);
 
-  console.log(generatedProfit);
-  console.log({ expected: Number(profit) + Number(generatedProfit) });
+  // console.log(generatedProfit);
+  // console.log({ expected: Number(profit) + Number(generatedProfit) });
 
-  const saveToDb = async () => {
-    console.log("saving...");
-    const savedProfit = await User.findOneAndUpdate(
-      { _id: foundUser?._id },
-      {
-        profit: Number(foundUser?.profit) + Number(newProfit),
-      }
-    );
-    console.log(savedProfit);
+  // const saveToDb = async () => {
+  //   console.log("saving...");
+  //   const savedProfit = await User.findOneAndUpdate(
+  //     { _id: foundUser?._id },
+  //     {
+  //       profit: Number(foundUser?.profit) + Number(newProfit),
+  //     }
+  //   );
+  //   console.log(savedProfit);
 
-    if (savedProfit) {
-      console.log("done saving");
-      return true;
-    }
-  };
+  //   if (savedProfit) {
+  //     console.log("done saving");
+  //     return true;
+  //   }
+  // };
 
-  let finalProfit = 0;
-  let newProfit = 0;
-  let newBalance = 0;
-  agenda.define("generate profit", async (job) => {
-    // console.log("saving...");
-    newProfit = newProfit + Number(generatedProfit);
-    finalProfit = Number(foundUser?.profit) + Number(newProfit);
-    newBalance = Number(foundUser?.invested) + Number(finalProfit);
-    const savedProfit = await User.findOneAndUpdate(
-      { _id: foundUser?._id },
-      {
-        profit: finalProfit,
-        balance: newBalance,
-      }
-    );
-    // job.repeatEvery("2 seconds", {
-    //   skipImmediate: true,
-    // });
-    await job.save();
-    console.log(newProfit);
-    console.log(finalProfit);
-    console.log("saved successfully");
-  });
+  // let finalProfit = 0;
+  // let newProfit = 0;
+  // let newBalance = 0;
+  // agenda.define("generate profit", async (job) => {
+  //   // console.log("saving...");
+  //   newProfit = newProfit + Number(generatedProfit);
+  //   finalProfit = Number(foundUser?.profit) + Number(newProfit);
+  //   newBalance = Number(foundUser?.invested) + Number(finalProfit);
+  //   const savedProfit = await User.findOneAndUpdate(
+  //     { _id: foundUser?._id },
+  //     {
+  //       profit: finalProfit,
+  //       balance: newBalance,
+  //     }
+  //   );
+  // job.repeatEvery("2 seconds", {
+  //   skipImmediate: true,
+  // });
+  //   await job.save();
+  //   console.log(newProfit);
+  //   console.log(finalProfit);
+  //   console.log("saved successfully");
+  // });
   // { setShouldSaveResult: true }'
 
-  if (genProfit === true) {
-    (async function () {
-      console.log("starting");
-      await agenda.start();
-      await agenda.every("5 seconds", "generate profit");
-    })();
-  }
+  // if (genProfit === true) {
+  //   (async function () {
+  //     console.log("starting");
+  //     await agenda.start();
+  //     await agenda.every("5 seconds", "generate profit");
+  //   })();
+  // }
 
-  if (genProfit === false) {
-    (async function () {
-      await agenda.stop();
-    })();
-  }
+  // if (genProfit === false) {
+  //   (async function () {
+  //     await agenda.stop();
+  //   })();
+  // }
 
   // mainFunc();
 
@@ -249,7 +249,8 @@ const editUserData = asyncHandler(async (req, res) => {
     { _id: foundUser?._id },
     {
       invested: invested ?? "00.00",
-
+      profit: profit ?? "00.00",
+      balance: balance ?? "00.00",
       loss: loss ?? "00.00",
       plan: plan ?? "None",
     }

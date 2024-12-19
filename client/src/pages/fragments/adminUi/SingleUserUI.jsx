@@ -292,11 +292,11 @@ export default function SingleUserUi() {
           {/* BALANCE  */}
           <div className="form-div-style">
             <label htmlFor="balance" className="form-label-style ">
-              Balance {"(Read Only)"}:{" "}
+              Balance :{" "}
             </label>
             <input
               type="text"
-              readOnly={true}
+              // readOnly={true}
               // placeholder={serverData?.balance}
               // defaultValue={serverData?.balance}
               id="balance"
@@ -351,11 +351,11 @@ export default function SingleUserUi() {
           {/* PROFIT  */}
           <div className="form-div-style">
             <label htmlFor="profit" className="form-label-style ">
-              Profit {"(Read Only)"}:{" "}
+              Profit :{" "}
             </label>
             <input
               type="text"
-              readOnly={true}
+              // readOnly={true}
               // placeholder={serverData?.profit}
               // defaultValue={serverData?.profit}
               id="profit"
