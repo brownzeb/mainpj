@@ -182,14 +182,6 @@ export default function Contact() {
             {errors?.message && errors?.message?.type === "required" && (
               <p className="error-msg-style">{errors?.message?.message}</p>
             )}
-
-            {/* {errors?.message && errors?.message?.type === "maxLength" && (
-              <p className="error-msg-style"> {errors?.message?.message}</p>
-            )}
-
-            {errors?.message && errors?.message?.type === "minLength" && (
-              <p className="error-msg-style"> {errors?.message?.message}</p>
-            )} */}
           </div>
           {/* END OF PASSWORD */}
 

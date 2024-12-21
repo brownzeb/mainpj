@@ -91,9 +91,6 @@ export default function Forgotpwd() {
     }
   };
 
-  // console.log(logicError);
-  // console.log(auth);
-  // console.log("hello");
   // REGISTER PAGE CONTENT
   const content = (
     <main className="w-full min-h-screen    text-black  flex  flex-col py-16  justify-around  items-center  ">
