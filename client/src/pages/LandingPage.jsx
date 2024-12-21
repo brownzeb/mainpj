@@ -73,7 +73,7 @@ export default function LandingPage() {
     })();
 
     return () => {
-      document.body.removeChild(script);
+      // document.body.removeChild(script);
     };
   }, []);
 
