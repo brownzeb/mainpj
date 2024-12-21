@@ -98,11 +98,6 @@ export default function RegisterPage() {
       >
         {/* FULL NAME  */}
         <div className="form-div-style">
-          {/* <h4>
-            We are happy{" "}
-            <span className="text-yellow-400 text-[1.4rem] "> &#9787; </span>
-            to have you.{" "}
-          </h4> */}
           <label htmlFor="fullName" className="form-label-style ">
             {/* Fullname:{" "} */}
           </label>
