@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
-// import axios from "axios";
 import * as EmailValidator from "email-validator";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "../api/axios";
@@ -127,7 +126,6 @@ export default function LoginPage() {
       <p className="w-[70%]  text-gray-900  text-[0.8rem]  font-thin  text-center tracking-wide">
         Login into your account now.
       </p>
-      {/* <FaRegCircleUser className="inline  text-[1.5rem] " />{" "} */}
       {/* <hr className="w-[50%] bg-black" /> */}
       {logicError.errorData && (
         <p className="error-msg-style ">{logicError.errorData}</p>
