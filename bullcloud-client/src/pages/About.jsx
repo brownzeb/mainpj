@@ -10,7 +10,6 @@ import mine from "../assets/mine.png";
 export default function About() {
   const content = (
     <main className="min-h-screen w-full my-[1rem]    text-black ">
-      {/* WHO WE ARE  */}
       <section className="w-[90%]  mx-auto  ">
         <h2 className="min-w-fit  text-left  sm:text-center mx-auto  text-[2rem]  font-serif">
           Who We Are
@@ -61,14 +60,7 @@ export default function About() {
       {/* INTEGRATED SYSTEMS */}
 
       <section className="w-[99%]  p-[1rem]    text-black   my-[2rem]  mx-auto  ">
-        {/* <h2 className="min-w-fit  my-[1rem] text-left  sm:text-center mx-auto  text-[1.5rem]  font-serif">
-          Legal Company
-        </h2> */}
-
         <article className=" w-full  sm:w-[99%]     mx-auto  flex flex-col sm:flex-row justify-around  items-center  gap-3    ">
-          {/* <div className="w-full h-full  ">
-            <img src={belief} alt="belief" className="w-full  h-full" />
-          </div> */}
           <div className=" w-full   flex flex-col  justify-center  items-center gap-3 ">
             <h2 className="text-[1.5rem] p-[0.7rem] font-serif   bg-clip-text  text-transparent  bg-gradient-to-r  from-red-800 to-green-800">
               A Fully Integrated system for large Crypto Mining and Trading
