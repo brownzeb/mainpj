@@ -105,7 +105,6 @@ export default function Contact() {
             Feel Free to drop us a message
           </span>{" "}
         </div>
-        {/* <hr className="w-[50%] bg-black" /> */}
 
         {logicError.errorData && logicError.isError === true ? (
           <p className="error-msg-style ">{logicError.errorData}</p>

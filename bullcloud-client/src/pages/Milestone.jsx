@@ -21,10 +21,8 @@ export default function Milestone() {
         </article>
       </section>
       <section className="w-full  my-[4rem] tracking-wide  text-center  flex flex-col justify-around  items-center ">
-        {/* <img src={mstone} alt="milestone" className="w-[90%] mx-auto h-[50%]" /> */}
         <h2 className="w-[98%] underline underline-offset-4  capitalize  mx-auto font-black text-gray-700">
           milestone from 2016 - 2024
-          {/* this is a test */}
         </h2>
         {milestone.map((data) => (
           <div
