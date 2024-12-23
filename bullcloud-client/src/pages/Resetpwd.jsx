@@ -109,9 +109,6 @@ export default function Resetpwd() {
     }
   };
 
-  // console.log(logicError);
-  // console.log(auth);
-  // console.log("hello");
   // REGISTER PAGE CONTENT
   const content = (
     <main className="w-full min-h-screen   bg-white  text-white  flex  flex-col py-16  justify-around  items-center  ">
