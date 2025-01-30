@@ -33,7 +33,7 @@ import { BsFillWalletFill } from "react-icons/bs";
 import { FaBtc } from "react-icons/fa";
 
 // SITE NAME
-export const domain = "bullcloudtraders";
+export const domain = "bullishpalace";
 
 // CONTACT US
 
@@ -164,17 +164,17 @@ export const investmentPlans = [
   {
     name: "Standard Plan",
     CB: "Yes",
-    minAmount: "$1000",
-    maxAmount: "$5,000",
-    ROI: "6% daily",
+    minAmount: "$100",
+    maxAmount: "$499",
+    ROI: "5% daily",
     RC: "2%",
     id: 1,
   },
   {
     name: "Mega Plan",
     CB: "Yes",
-    minAmount: "$5,100",
-    maxAmount: "$10,000",
+    minAmount: "$500",
+    maxAmount: "$2,499",
     ROI: "8% daily",
     RC: "4%",
     id: 2,
@@ -182,8 +182,8 @@ export const investmentPlans = [
   {
     name: "Deluxe Plan",
     CB: "Yes",
-    minAmount: "$10,000",
-    maxAmount: "$20,000",
+    minAmount: "$2,500",
+    maxAmount: "$9,999",
     ROI: "10% daily",
     RC: "6%",
     id: 3,
@@ -191,9 +191,9 @@ export const investmentPlans = [
   {
     name: "VIP Plan",
     CB: "Yes",
-    minAmount: "$21,000",
+    minAmount: "$10,000",
     maxAmount: "Unlimited",
-    ROI: "15% daily",
+    ROI: "13% daily",
     RC: "8%",
     id: 4,
   },
