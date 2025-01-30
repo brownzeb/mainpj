@@ -5,8 +5,6 @@ const BASE_URL = "https://server-rho-drab.vercel.app/";
 
 // const BASE_URL = "http://127.0.0.1:6700/";
 
-// man is a rational being
-
 const apiHeader = {
   headers: {
     Accept: "application/json",
