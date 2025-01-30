@@ -8,6 +8,8 @@ import choose from "../assets/whychooseus.jpg";
 import mine from "../assets/mine.png";
 
 export default function About() {
+  // main us
+
   const content = (
     <main className="min-h-screen w-full my-[1rem]    text-black ">
       <section className="w-[90%]  mx-auto  ">
