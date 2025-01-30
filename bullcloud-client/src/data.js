@@ -385,7 +385,7 @@ export const walletTypes = [
 
 // 0xB91D00440E338CF4242cd99603aAB693fFdD0a56
 
-// Trx;sniorgnperi
+// Trx;sniorgnperikljnoviruoelbgoio
 
 // TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH
 
